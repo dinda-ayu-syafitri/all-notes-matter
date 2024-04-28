@@ -14,10 +14,15 @@ class GameScene:SKScene {
     // UI Node
     var uiPanel: SKShapeNode!
 
+    //    Camera
+    var playerCam = SKCameraNode()
+
     //    PlayerNode
     var playerNode: SKSpriteNode!
     var playerPosX: CGFloat = 0
     var playerPosY: CGFloat = 0
+    var isGoRight: Bool = false
+    var animationRun = false
 
     //    Player Controller
     var virtualController: GCVirtualController?
@@ -61,6 +66,7 @@ class GameScene:SKScene {
 
         let textureAtlas = SKTextureAtlas(named: atlasName)
 
+
         var textures:[SKTexture] = []
 
         for i in textureAtlas.textureNames {
@@ -75,30 +81,37 @@ class GameScene:SKScene {
     override func didMove(to view: SKView) {
         bgNode = createSpriteNode(imageName: "bg-texture", scale: 1, position: CGPoint(x:size.width / 2 + 45, y: size.height / 2 + 70))
 
-        uiPanel = SKShapeNode(rectOf: CGSize(width: size.width, height: 230))
+
+        playerCam.setScale(1)
+        camera = playerCam
+
+        // Player Set Up
+        playerNode = createSpriteNode(imageName: "player", scale: 0.2, position: CGPoint(x: size.width / 2, y: 400))
+        playerNode.run(SKAction.repeatForever(createAnimation(atlasName: "player-idle")))
+
+
+        // UI Set Up
+        uiPanel = SKShapeNode(rectOf: CGSize(width: size.width, height: 270))
         uiPanel.position = CGPoint(x: size.width / 2, y: 115)
         uiPanel.zPosition = 50
         uiPanel.fillColor = UIColor(red: 0.13, green: 0.13, blue: 0.13, alpha: 1)
         uiPanel.strokeColor = UIColor.clear
         addChild(uiPanel)
 
-        // Player Set Up
-        playerNode = createSpriteNode(imageName: "player", scale: 0.2, position: CGPoint(x: size.width / 2, y: 400))
-        playerNode.run(SKAction.repeatForever(createAnimation(atlasName: "player-idle")))
-
         //Controller Set up
         //Thumbstick
         thumbstickNode = SKShapeNode(circleOfRadius: 80)
         thumbstickNode.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y - 300)
         thumbstickNode.zPosition = 60
-        thumbstickNode.fillColor = UIColor.gray
-        thumbstickNode.strokeColor = UIColor.black
+        thumbstickNode.fillColor = UIColor(red: 0.22, green: 0.22, blue: 0.22, alpha: 1)
+        thumbstickNode.strokeColor = UIColor.clear
         addChild(thumbstickNode)
 
         //Thumb Tracker
         touchTrackerNode = SKShapeNode(circleOfRadius: 20)
         touchTrackerNode.position = thumbstickNode.position
-        touchTrackerNode.fillColor = UIColor.red
+        touchTrackerNode.fillColor = UIColor(red: 0.95, green: 0.57, blue: 0.02, alpha: 1)
+        touchTrackerNode.strokeColor = UIColor.clear
         touchTrackerNode.zPosition = 70
         addChild(touchTrackerNode)
 
@@ -111,7 +124,7 @@ class GameScene:SKScene {
         virtualController = controller
 
 
-
+        
         // Instrument Set Up
         drumNode = createSpriteNode(imageName: "drum", scale: 0.19, position: CGPoint(x: -85, y: 657))
         drumNode.run(SKAction.repeatForever(createAnimation(atlasName:"drum-textures")))
@@ -148,7 +161,20 @@ class GameScene:SKScene {
 
         if thumbstickNode.contains(touch.location(in: self)) {
             thumbstickTouch = touch
+
+            let playerWalking = SKSpriteNode(imageNamed: "player2")
+            playerWalking.setScale(0.2)
+            playerWalking.position = playerNode.position
+            playerNode.removeFromParent()
+            playerNode = playerWalking
+            addChild(playerNode)
+            playerNode.run(SKAction.repeatForever(createAnimation(atlasName: "player-walking")))
+
+            animationRun = true
+
         }
+
+
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -172,6 +198,13 @@ class GameScene:SKScene {
             let trackerPositionX = thumbstickNode.position.x + (trackerDistance * cos(atan2(positionInThumbstick.y, positionInThumbstick.x)))
             let trackerPositionY = thumbstickNode.position.y + (trackerDistance * sin(atan2(positionInThumbstick.y, positionInThumbstick.x)))
             touchTrackerNode.position = CGPoint(x: trackerPositionX, y: trackerPositionY)
+
+            if playerPosX > 1 {
+                isGoRight = true
+            }
+
+            animationRun = false
+
         }
     }
 
@@ -184,14 +217,40 @@ class GameScene:SKScene {
             thumbstickTouch = nil
             touchTrackerNode.position = thumbstickNode.position
         }
+
+        let playerIdle = SKSpriteNode(imageNamed: "player")
+        playerIdle.setScale(0.2)
+        playerIdle.position = playerNode.position
+        playerNode.removeFromParent()
+        playerNode = playerIdle
+        addChild(playerNode)
+        playerNode.run(SKAction.repeatForever(createAnimation(atlasName: "player-idle")))
+
+        isGoRight = false
+
+        animationRun = false
+
     }
 
     override func update(_ currentTime: TimeInterval) {
         playerNode.position.x += playerPosX * 1
         playerNode.position.y += playerPosY * 1
 
+        playerCam.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y)
+
+
+        uiPanel.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y - 300)
         thumbstickNode.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y-300)
 
+        if animationRun {
+            print("animation run")
+        }
+
+        if playerPosX > 0 {
+            playerNode.xScale = abs(playerNode.xScale)
+        } else if playerPosX < 0 {
+            playerNode.xScale = -abs(playerNode.xScale)
+        }
     }
 }
 
