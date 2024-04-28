@@ -21,8 +21,7 @@ struct ContentView: View {
 
         scene.size = CGSize(width: sceneWidth, height: sceneHeight)
         scene.scaleMode = .fill
-        scene.backgroundColor = .gray
-
+        scene.backgroundColor = UIColor(red: 0.12, green: 0.12, blue: 0.12, alpha: 1)
 
         return scene
     }
