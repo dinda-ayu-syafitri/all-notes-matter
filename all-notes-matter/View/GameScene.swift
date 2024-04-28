@@ -40,18 +40,13 @@ class GameScene:SKScene {
     var bassNode: SKSpriteNode!
     var bongoNode: SKSpriteNode!
 
-    //    Bass Audio -> Gambar Bass
-    //    Guitar Audio -> Gambar Guitar
-    //    Drum Audio -> Gambar Drum + ‘Gendang’ (?)
-    //    Vocals Audio -> Gambar Sax + trumpet
-    //    Other Audio -> Gambar Piano + Synth + Harmonica
-
     // Audio Node
     var guitarAudio: SKAudioNode!
     var bassAudio: SKAudioNode!
     var percussionAudio: SKAudioNode!
     var SaxTrumpetAudio: SKAudioNode!
     var pianoHarmonicaAudio: SKAudioNode!
+    var completeAudio: SKAudioNode!
 
     func createSpriteNode(imageName:String, scale:CGFloat, position:CGPoint ) -> SKSpriteNode {
         let node = SKSpriteNode(imageNamed: imageName)
@@ -76,6 +71,19 @@ class GameScene:SKScene {
         let animations = SKAction.animate(with: textures, timePerFrame: 0.2)
 
         return animations
+    }
+
+    func createAudio(audioName: String, audioExtension: String, forNode: SKSpriteNode) -> SKAudioNode? {
+        if let audioURL = Bundle.main.url(forResource: audioName, withExtension: audioExtension) {
+            let audioNode = SKAudioNode(url: audioURL)
+            audioNode.isPositional = true
+            audioNode.position = forNode.position
+            audioNode.run(SKAction.changeVolume(to: 1, duration: 0))
+            forNode.addChild(audioNode)
+            return audioNode
+        } else {
+            return nil
+        }
     }
 
     override func didMove(to view: SKView) {
@@ -124,7 +132,7 @@ class GameScene:SKScene {
         virtualController = controller
 
 
-        
+
         // Instrument Set Up
         drumNode = createSpriteNode(imageName: "drum", scale: 0.19, position: CGPoint(x: -85, y: 657))
         drumNode.run(SKAction.repeatForever(createAnimation(atlasName:"drum-textures")))
@@ -154,6 +162,26 @@ class GameScene:SKScene {
         bassNode = createSpriteNode(imageName: "bass", scale: 0.22, position: CGPoint(x: 510, y: 325))
 
 
+        //    Bass Audio -> Gambar Bass
+        //    Guitar Audio -> Gambar Guitar
+        //    Drum Audio -> Gambar Drum + ‘Gendang’ (?)
+        //    Vocals Audio -> Gambar Sax + trumpet
+        //    Other Audio -> Gambar Piano + Synth + Harmonica
+        //        Audio Set Up
+        if let bgAudioURL = Bundle.main.url(forResource: "Stevie Wonder - Spain", withExtension: "mp3") {
+            let bgAudioNode = SKAudioNode(url: bgAudioURL)
+            bgAudioNode.run(SKAction.changeVolume(to: 1, duration: 0))
+            addChild(bgAudioNode)
+        }
+
+        percussionAudio = createAudio(audioName: "drum", audioExtension: "m4a", forNode: drumNode)
+        bassAudio = createAudio(audioName: "bass", audioExtension: "m4a", forNode: bassNode)
+        guitarAudio = createAudio(audioName: "guitar", audioExtension: "m4a", forNode: guitarNode)
+        SaxTrumpetAudio = createAudio(audioName: "vocals", audioExtension: "m4a", forNode: saxNode)
+        pianoHarmonicaAudio = createAudio(audioName: "other", audioExtension: "m4a", forNode: pianoSynthNode)
+
+
+
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -169,9 +197,6 @@ class GameScene:SKScene {
             playerNode = playerWalking
             addChild(playerNode)
             playerNode.run(SKAction.repeatForever(createAnimation(atlasName: "player-walking")))
-
-            animationRun = true
-
         }
 
 
@@ -202,9 +227,6 @@ class GameScene:SKScene {
             if playerPosX > 1 {
                 isGoRight = true
             }
-
-            animationRun = false
-
         }
     }
 
@@ -226,10 +248,6 @@ class GameScene:SKScene {
         addChild(playerNode)
         playerNode.run(SKAction.repeatForever(createAnimation(atlasName: "player-idle")))
 
-        isGoRight = false
-
-        animationRun = false
-
     }
 
     override func update(_ currentTime: TimeInterval) {
@@ -241,10 +259,6 @@ class GameScene:SKScene {
 
         uiPanel.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y - 300)
         thumbstickNode.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y-300)
-
-        if animationRun {
-            print("animation run")
-        }
 
         if playerPosX > 0 {
             playerNode.xScale = abs(playerNode.xScale)
