@@ -13,6 +13,13 @@
 		20D8D9982BDA4E90003148F8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20D8D9972BDA4E90003148F8 /* Preview Assets.xcassets */; };
 		47A25F572BDF4909004BE6BA /* StartMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A25F562BDF4909004BE6BA /* StartMenu.swift */; };
 		47A25F592BDF4F14004BE6BA /* CharacterMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A25F582BDF4F14004BE6BA /* CharacterMenu.swift */; };
+		20E43D7B2BDCA68400715972 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E43D7A2BDCA68400715972 /* GameScene.swift */; };
+		20E43D842BDCEAD400715972 /* bass.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 20E43D7E2BDCEAD200715972 /* bass.m4a */; };
+		20E43D852BDCEAD400715972 /* vocals.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 20E43D7F2BDCEAD200715972 /* vocals.m4a */; };
+		20E43D862BDCEAD400715972 /* Stevie Wonder - Spain.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20E43D802BDCEAD300715972 /* Stevie Wonder - Spain.mp3 */; };
+		20E43D872BDCEAD400715972 /* drum.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 20E43D812BDCEAD300715972 /* drum.m4a */; };
+		20E43D882BDCEAD400715972 /* other.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 20E43D822BDCEAD300715972 /* other.m4a */; };
+		20E43D892BDCEAD400715972 /* guitar.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 20E43D832BDCEAD400715972 /* guitar.m4a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +30,13 @@
 		20D8D9972BDA4E90003148F8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		47A25F562BDF4909004BE6BA /* StartMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenu.swift; sourceTree = "<group>"; };
 		47A25F582BDF4F14004BE6BA /* CharacterMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMenu.swift; sourceTree = "<group>"; };
+		20E43D7A2BDCA68400715972 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		20E43D7E2BDCEAD200715972 /* bass.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = bass.m4a; sourceTree = "<group>"; };
+		20E43D7F2BDCEAD200715972 /* vocals.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = vocals.m4a; sourceTree = "<group>"; };
+		20E43D802BDCEAD300715972 /* Stevie Wonder - Spain.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Stevie Wonder - Spain.mp3"; sourceTree = "<group>"; };
+		20E43D812BDCEAD300715972 /* drum.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = drum.m4a; sourceTree = "<group>"; };
+		20E43D822BDCEAD300715972 /* other.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = other.m4a; sourceTree = "<group>"; };
+		20E43D832BDCEAD400715972 /* guitar.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = guitar.m4a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +69,8 @@
 		20D8D98F2BDA4E8E003148F8 /* all-notes-matter */ = {
 			isa = PBXGroup;
 			children = (
+				20E43D7C2BDCEA8900715972 /* Assets */,
+				20E43D792BDCA62600715972 /* View */,
 				20D8D9902BDA4E8E003148F8 /* all_notes_matterApp.swift */,
 				20D8D9922BDA4E8E003148F8 /* ContentView.swift */,
 				47A25F562BDF4909004BE6BA /* StartMenu.swift */,
@@ -71,6 +87,35 @@
 				20D8D9972BDA4E90003148F8 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		20E43D792BDCA62600715972 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				20E43D7A2BDCA68400715972 /* GameScene.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		20E43D7C2BDCEA8900715972 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				20E43D7D2BDCEA9E00715972 /* AudioSrc */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		20E43D7D2BDCEA9E00715972 /* AudioSrc */ = {
+			isa = PBXGroup;
+			children = (
+				20E43D7E2BDCEAD200715972 /* bass.m4a */,
+				20E43D812BDCEAD300715972 /* drum.m4a */,
+				20E43D832BDCEAD400715972 /* guitar.m4a */,
+				20E43D822BDCEAD300715972 /* other.m4a */,
+				20E43D802BDCEAD300715972 /* Stevie Wonder - Spain.mp3 */,
+				20E43D7F2BDCEAD200715972 /* vocals.m4a */,
+			);
+			path = AudioSrc;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,7 +177,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				20D8D9982BDA4E90003148F8 /* Preview Assets.xcassets in Resources */,
+				20E43D842BDCEAD400715972 /* bass.m4a in Resources */,
+				20E43D852BDCEAD400715972 /* vocals.m4a in Resources */,
+				20E43D862BDCEAD400715972 /* Stevie Wonder - Spain.mp3 in Resources */,
+				20E43D872BDCEAD400715972 /* drum.m4a in Resources */,
 				20D8D9952BDA4E90003148F8 /* Assets.xcassets in Resources */,
+				20E43D892BDCEAD400715972 /* guitar.m4a in Resources */,
+				20E43D882BDCEAD400715972 /* other.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				47A25F592BDF4F14004BE6BA /* CharacterMenu.swift in Sources */,
+				20E43D7B2BDCA68400715972 /* GameScene.swift in Sources */,
 				20D8D9932BDA4E8E003148F8 /* ContentView.swift in Sources */,
 				20D8D9912BDA4E8E003148F8 /* all_notes_matterApp.swift in Sources */,
 				47A25F572BDF4909004BE6BA /* StartMenu.swift in Sources */,
