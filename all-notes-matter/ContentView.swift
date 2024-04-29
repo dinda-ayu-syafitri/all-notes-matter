@@ -8,7 +8,7 @@
 import SwiftUI
 import SpriteKit
 import AVFoundation
-
+//
 struct ContentView: View {
 
 
@@ -36,6 +36,6 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
-}
+//#Preview {
+//    ContentView()
+//}

@@ -7,22 +7,26 @@
 
 import SpriteKit
 import GameController
+import AVFoundation
 
 class GameScene:SKScene {
     var bgNode: SKSpriteNode!
 
-    // UI Node
-    var uiPanel: SKShapeNode!
-
     //    Camera
     var playerCam = SKCameraNode()
+
+    // UI Node
+    var uiPanel: SKShapeNode!
+    var progressBar: SKShapeNode!
+    var backBtn: SKSpriteNode!
+    var nextBtn: SKSpriteNode!
+
+    var progress: CGFloat = 0
 
     //    PlayerNode
     var playerNode: SKSpriteNode!
     var playerPosX: CGFloat = 0
     var playerPosY: CGFloat = 0
-    var isGoRight: Bool = false
-    var animationRun = false
 
     //    Player Controller
     var virtualController: GCVirtualController?
@@ -41,12 +45,21 @@ class GameScene:SKScene {
     var bongoNode: SKSpriteNode!
 
     // Audio Node
-    var guitarAudio: SKAudioNode!
-    var bassAudio: SKAudioNode!
-    var percussionAudio: SKAudioNode!
-    var SaxTrumpetAudio: SKAudioNode!
-    var pianoHarmonicaAudio: SKAudioNode!
-    var completeAudio: SKAudioNode!
+        var guitarAudio: SKAudioNode!
+        var bassAudio: SKAudioNode!
+        var percussionAudio: SKAudioNode!
+        var SaxTrumpetAudio: SKAudioNode!
+        var pianoHarmonicaAudio: SKAudioNode!
+        var completeAudio: SKAudioNode!
+//    var guitarAudio: AVAudioPlayer!
+//    var bassAudio: AVAudioPlayer!
+//    var percussionAudio: AVAudioPlayer!
+//    var SaxTrumpetAudio: AVAudioPlayer!
+//    var pianoHarmonicaAudio: AVAudioPlayer!
+//    var completeAudio: AVAudioPlayer!
+
+    var bgAudioPlayer: AVAudioPlayer!
+
 
     func createSpriteNode(imageName:String, scale:CGFloat, position:CGPoint ) -> SKSpriteNode {
         let node = SKSpriteNode(imageNamed: imageName)
@@ -73,18 +86,36 @@ class GameScene:SKScene {
         return animations
     }
 
-    func createAudio(audioName: String, audioExtension: String, forNode: SKSpriteNode) -> SKAudioNode? {
-        if let audioURL = Bundle.main.url(forResource: audioName, withExtension: audioExtension) {
-            let audioNode = SKAudioNode(url: audioURL)
-            audioNode.isPositional = true
-            audioNode.position = forNode.position
-            audioNode.run(SKAction.changeVolume(to: 1, duration: 0))
-            forNode.addChild(audioNode)
-            return audioNode
-        } else {
-            return nil
+        func createAudio(audioName: String, audioExtension: String, forNode: SKSpriteNode) -> SKAudioNode? {
+            if let audioURL = Bundle.main.url(forResource: audioName, withExtension: audioExtension) {
+                let audioNode = SKAudioNode(url: audioURL)
+                audioNode.isPositional = true
+                audioNode.position = forNode.position
+                audioNode.run(SKAction.changeVolume(to: 1, duration: 0))
+                forNode.addChild(audioNode)
+                return audioNode
+            } else {
+                return nil
+            }
         }
-    }
+
+//    func createAudio(audioName: String, audioExtension: String, forNode: SKSpriteNode) -> AVAudioPlayer? {
+//        if let audioURL = Bundle.main.url(forResource: audioName, withExtension: audioExtension) {
+//            do {
+//                let audioPlayer = try AVAudioPlayer(contentsOf: audioURL)
+//                audioPlayer.prepareToPlay()
+//
+//                return audioPlayer
+//            } catch {
+//                // Handle the error
+//                print("Failed to initialize AVAudioPlayer: \(error)")
+//            }
+//        } else {
+//            // Handle the case where the audio file URL is nil
+//            print("Failed to find audio file")
+//        }
+//        return nil // Return nil if audio player couldn't be created
+//    }
 
     override func didMove(to view: SKView) {
         bgNode = createSpriteNode(imageName: "bg-texture", scale: 1, position: CGPoint(x:size.width / 2 + 45, y: size.height / 2 + 70))
@@ -106,8 +137,22 @@ class GameScene:SKScene {
         uiPanel.strokeColor = UIColor.clear
         addChild(uiPanel)
 
-        //Controller Set up
-        //Thumbstick
+        backBtn = createSpriteNode(imageName: "back5", scale: 1, position: CGPoint(x: playerNode.position.x - 130, y: playerNode.position.y - 300))
+        backBtn.zPosition = 55
+
+        nextBtn = createSpriteNode(imageName: "next5", scale: 1, position: CGPoint(x: playerNode.position.x + 130, y: playerNode.position.y - 300))
+        nextBtn.zPosition = 55
+
+        // Progress Bar
+        progressBar = SKShapeNode(rectOf: CGSize(width: size.width - 50, height: 5))
+        progressBar.fillColor = UIColor(red: 0.95, green: 0.57, blue: 0.02, alpha: 1)
+        progressBar.strokeColor = UIColor.clear
+        progressBar.position = CGPoint(x: 0, y: playerNode.position.y - 200)
+        progressBar.zPosition = 100
+        addChild(progressBar)
+
+        // Controller Set up
+        // Thumbstick
         thumbstickNode = SKShapeNode(circleOfRadius: 80)
         thumbstickNode.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y - 300)
         thumbstickNode.zPosition = 60
@@ -150,8 +195,8 @@ class GameScene:SKScene {
         trumpetNode = createSpriteNode(imageName: "trumpet", scale: 0.25, position: CGPoint(x: -75, y: 440))
         trumpetNode.run(SKAction.repeatForever(createAnimation(atlasName: "trumpet-textures")))
 
-        saxNode = createSpriteNode(imageName: "saxo", scale: 0.5, position: CGPoint(x: 430, y: 500))
-        saxNode.xScale = -0.5
+        saxNode = createSpriteNode(imageName: "sax", scale: 0.25, position: CGPoint(x: 430, y: 500))
+        saxNode.xScale = -0.25
         saxNode.zRotation = -0.25
         saxNode.run(SKAction.repeatForever(createAnimation(atlasName: "sax-textures")))
 
@@ -167,19 +212,43 @@ class GameScene:SKScene {
         //    Drum Audio -> Gambar Drum + ‘Gendang’ (?)
         //    Vocals Audio -> Gambar Sax + trumpet
         //    Other Audio -> Gambar Piano + Synth + Harmonica
-        //        Audio Set Up
+        //                Audio Set Up
         if let bgAudioURL = Bundle.main.url(forResource: "Stevie Wonder - Spain", withExtension: "mp3") {
             let bgAudioNode = SKAudioNode(url: bgAudioURL)
             bgAudioNode.run(SKAction.changeVolume(to: 1, duration: 0))
             addChild(bgAudioNode)
         }
 
+        //        let audioFile = "Stevie Wonder - Spain.mp3" // Replace with your audio file name
+        //        if let audioURL = Bundle.main.url(forResource: audioFile, withExtension: nil) {
+        //            do {
+        //                bgAudioPlayer = try AVAudioPlayer(contentsOf: audioURL)
+        //                // Audio player initialized successfully, continue with your logic
+        //
+        //                print(bgAudioPlayer.duration)
+        //            } catch {
+        //                // Handle the error
+        //                print("Failed to initialize AVAudioPlayer: \(error)")
+        //            }
+        //        } else {
+        //            // Handle the case where the audio file URL is nil
+        //            print("Failed to find audio file: \(audioFile)")
+        //        }
         percussionAudio = createAudio(audioName: "drum", audioExtension: "m4a", forNode: drumNode)
         bassAudio = createAudio(audioName: "bass", audioExtension: "m4a", forNode: bassNode)
         guitarAudio = createAudio(audioName: "guitar", audioExtension: "m4a", forNode: guitarNode)
         SaxTrumpetAudio = createAudio(audioName: "vocals", audioExtension: "m4a", forNode: saxNode)
         pianoHarmonicaAudio = createAudio(audioName: "other", audioExtension: "m4a", forNode: pianoSynthNode)
 
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+            //            let increment = (0.1 / TimeInterval(703.3731)) * 100.0
+            let increment = (0.1 / TimeInterval(300)) * 100.0
+            self.progress += CGFloat(increment)
+
+            if self.progress >= 100 {
+                timer.invalidate()
+            }
+        }
 
 
     }
@@ -224,9 +293,6 @@ class GameScene:SKScene {
             let trackerPositionY = thumbstickNode.position.y + (trackerDistance * sin(atan2(positionInThumbstick.y, positionInThumbstick.x)))
             touchTrackerNode.position = CGPoint(x: trackerPositionX, y: trackerPositionY)
 
-            if playerPosX > 1 {
-                isGoRight = true
-            }
         }
     }
 
@@ -256,15 +322,26 @@ class GameScene:SKScene {
 
         playerCam.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y)
 
-
+        //        UI Relative to Camera
         uiPanel.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y - 300)
         thumbstickNode.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y-300)
+        progressBar.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y - 200)
+        nextBtn.position = CGPoint(x: playerNode.position.x + 130, y: playerNode.position.y - 300)
+        backBtn.position = CGPoint(x: playerNode.position.x - 130, y: playerNode.position.y - 300)
+
 
         if playerPosX > 0 {
             playerNode.xScale = abs(playerNode.xScale)
         } else if playerPosX < 0 {
             playerNode.xScale = -abs(playerNode.xScale)
         }
+        //
+        //        let progressBarWidth = (size.width - 50) * (CGFloat(progress) / 100)
+        //            progressBar.path = UIBezierPath(rect: CGRect(x: 0, y: 0, width: progressBarWidth, height: 5)).cgPath
+
+        let progressBarWidth = min(progress * (size.width - 50 / 100), size.width - 50)
+        progressBar.path = UIBezierPath(rect: CGRect(x: -173, y: 0, width: progressBarWidth, height: 5)).cgPath
+
     }
 }
 
