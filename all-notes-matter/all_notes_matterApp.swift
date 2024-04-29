@@ -11,7 +11,7 @@ import SwiftUI
 struct all_notes_matterApp: App {
     var body: some Scene {
         WindowGroup {
-            StartMenu()
+            SplashScreen()
         }
     }
 }
