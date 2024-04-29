@@ -43,6 +43,7 @@ class GameScene:SKScene {
     // UI Node
     var uiPanel: SKShapeNode!
     var progressBar: SKShapeNode!
+    var progressPlaceholder: SKShapeNode!
     var backBtn: SKSpriteNode!
     var nextBtn: SKSpriteNode!
 
@@ -55,9 +56,16 @@ class GameScene:SKScene {
 
     //    Player Controller
     var virtualController: GCVirtualController?
-    var thumbstickNode: SKShapeNode!
+    var thumbstickNode: SKSpriteNode!
     var thumbstickTouch: UITouch?
-    var touchTrackerNode: SKShapeNode!
+    var touchTrackerNode: SKSpriteNode!
+
+    // Instrument Group Node
+    var bassGroup: SKSpriteNode!
+    var percussionGroup: SKSpriteNode!
+    var guitarGroup: SKSpriteNode!
+    var pianoHarmonicaGroup: SKSpriteNode!
+    var saxTrumpetGroup: SKSpriteNode!
 
     // Instrument Node
     var guitarNode: SKSpriteNode!
@@ -86,7 +94,7 @@ class GameScene:SKScene {
         let node = SKSpriteNode(imageNamed: imageName)
         node.setScale(scale)
         node.position = position
-        addChild(node)
+        //        parent.addChild(node)
 
         return node
     }
@@ -155,53 +163,61 @@ class GameScene:SKScene {
 
 
     override func didMove(to view: SKView) {
-        bgNode = createSpriteNode(imageName: "bg-texture", scale: 1, position: CGPoint(x:size.width / 2 + 45, y: size.height / 2 + 70))
+        bgNode = createSpriteNode(imageName: "bg-big", scale: 1, position: CGPoint(x:size.width / 2, y: size.height / 2))
 
 
-        playerCam.setScale(1)
+        playerCam.setScale(1.3)
         camera = playerCam
 
         // Player Set Up
-        playerNode = createSpriteNode(imageName: "player", scale: 0.2, position: CGPoint(x: size.width / 2, y: 400))
+        playerNode = createSpriteNode(imageName: "player", scale: 0.2, position: CGPoint(x: size.width / 2, y: 500))
         playerNode.run(SKAction.repeatForever(createAnimation(atlasName: "player-idle")))
+
+        addChild(playerNode)
 
 
         // UI Set Up
-        uiPanel = SKShapeNode(rectOf: CGSize(width: size.width, height: 270))
-        uiPanel.position = CGPoint(x: size.width / 2, y: 115)
+        uiPanel = SKShapeNode(rectOf: CGSize(width: size.width * 2, height: 450))
+        uiPanel.position = CGPoint(x: size.width / 2, y: 35)
         uiPanel.zPosition = 50
         uiPanel.fillColor = UIColor(red: 0.13, green: 0.13, blue: 0.13, alpha: 1)
         uiPanel.strokeColor = UIColor.clear
         addChild(uiPanel)
 
-        backBtn = createSpriteNode(imageName: "back5", scale: 1, position: CGPoint(x: playerNode.position.x - 130, y: playerNode.position.y - 300))
+        backBtn = createSpriteNode(imageName: "back5", scale: 1, position: CGPoint(x: playerNode.position.x - 180, y: playerNode.position.y - 400))
         backBtn.zPosition = 55
+        addChild(backBtn)
 
-        nextBtn = createSpriteNode(imageName: "next5", scale: 1, position: CGPoint(x: playerNode.position.x + 130, y: playerNode.position.y - 300))
+        nextBtn = createSpriteNode(imageName: "next5", scale: 1, position: CGPoint(x: playerNode.position.x + 180, y: playerNode.position.y - 400))
         nextBtn.zPosition = 55
+        addChild(nextBtn)
 
         // Progress Bar
-        progressBar = SKShapeNode(rectOf: CGSize(width: size.width - 50, height: 5))
+        progressBar = SKShapeNode(rectOf: CGSize(width: size.width - 50, height: 8))
         progressBar.fillColor = UIColor(red: 0.95, green: 0.57, blue: 0.02, alpha: 1)
         progressBar.strokeColor = UIColor.clear
-        progressBar.position = CGPoint(x: 0, y: playerNode.position.y - 200)
         progressBar.zPosition = 100
         addChild(progressBar)
 
+        progressPlaceholder = SKShapeNode(rectOf: CGSize(width: size.width + 50, height: 8))
+        progressPlaceholder.fillColor = UIColor(.gray)
+        progressPlaceholder.strokeColor = UIColor.clear
+        progressPlaceholder.position = CGPoint(x: size.width/2 , y: 255)
+        progressPlaceholder.zPosition = 99
+        addChild(progressPlaceholder)
+
         // Controller Set up
         // Thumbstick
-        thumbstickNode = SKShapeNode(circleOfRadius: 80)
-        thumbstickNode.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y - 300)
+        thumbstickNode = createSpriteNode(imageName: "thumbpad", scale: 0.8, position: CGPoint(x: playerNode.position.x, y: playerNode.position.y - 400))
         thumbstickNode.zPosition = 60
-        thumbstickNode.fillColor = UIColor(red: 0.22, green: 0.22, blue: 0.22, alpha: 1)
-        thumbstickNode.strokeColor = UIColor.clear
+//        thumbstickNode.fillColor = UIColor(red: 0.22, green: 0.22, blue: 0.22, alpha: 1)
+//        thumbstickNode.strokeColor = UIColor.clear
         addChild(thumbstickNode)
 
         //Thumb Tracker
-        touchTrackerNode = SKShapeNode(circleOfRadius: 20)
-        touchTrackerNode.position = thumbstickNode.position
-        touchTrackerNode.fillColor = UIColor(red: 0.95, green: 0.57, blue: 0.02, alpha: 1)
-        touchTrackerNode.strokeColor = UIColor.clear
+        touchTrackerNode = createSpriteNode(imageName: "touch tracker", scale: 1.8, position: CGPoint(x: thumbstickNode.position.x - 5, y: thumbstickNode.position.y + 5))
+//        touchTrackerNode.fillColor = UIColor(red: 0.95, green: 0.57, blue: 0.02, alpha: 1)
+//        touchTrackerNode.strokeColor = UIColor.clear
         touchTrackerNode.zPosition = 70
         addChild(touchTrackerNode)
 
@@ -214,34 +230,68 @@ class GameScene:SKScene {
         virtualController = controller
 
 
-
         // Instrument Set Up
-        drumNode = createSpriteNode(imageName: "drum", scale: 0.19, position: CGPoint(x: -85, y: 657))
+        percussionGroup = createSpriteNode(imageName: "Drum and bongo hitbox", scale: 1, position: CGPoint(x: -75, y: 830))
+        addChild(percussionGroup)
+
+        drumNode = createSpriteNode(imageName: "drum", scale: 0.15, position: CGPoint(x: -30, y: 80))
         drumNode.run(SKAction.repeatForever(createAnimation(atlasName:"drum-textures")))
 
-        bongoNode = createSpriteNode(imageName: "gendang", scale: 0.12, position: CGPoint(x: 130, y: 685))
+        bongoNode = createSpriteNode(imageName: "gendang", scale: 0.08, position: CGPoint(x: 130, y: 80))
         bongoNode.run(SKAction.repeatForever(createAnimation(atlasName: "bongo-textures")))
 
-        pianoSynthNode = createSpriteNode(imageName: "piano", scale: 0.25, position: CGPoint(x: 475, y: 710))
+        percussionGroup.addChild(drumNode)
+        percussionGroup.addChild(bongoNode)
+
+
+        pianoHarmonicaGroup = createSpriteNode(imageName: "Piano and harmonica hitbox", scale: 1, position: CGPoint(x: 465, y: 740))
+        addChild(pianoHarmonicaGroup)
+
+        pianoSynthNode = createSpriteNode(imageName: "piano", scale: 0.2, position: CGPoint(x: 30, y: 30))
         pianoSynthNode.run(SKAction.repeatForever(createAnimation(atlasName: "keyboard-textures")))
 
-        harmonicaNode = createSpriteNode(imageName: "harmonica", scale: 0.1, position: CGPoint(x: 420, y: 600))
-        //        harmonicaNode.zRotation = 27
+        harmonicaNode = createSpriteNode(imageName: "harmonica", scale: 0.08, position: CGPoint(x: -20, y: -40))
+        harmonicaNode.zRotation = -0.15
         harmonicaNode.run(SKAction.repeatForever(createAnimation(atlasName: "harmonica-textures")))
 
-        trumpetNode = createSpriteNode(imageName: "trumpet", scale: 0.25, position: CGPoint(x: -75, y: 440))
-        trumpetNode.run(SKAction.repeatForever(createAnimation(atlasName: "trumpet-textures")))
+        pianoHarmonicaGroup.addChild(pianoSynthNode)
+        pianoHarmonicaGroup.addChild(harmonicaNode)
 
-        saxNode = createSpriteNode(imageName: "sax", scale: 0.25, position: CGPoint(x: 430, y: 500))
-        saxNode.xScale = -0.25
-        saxNode.zRotation = -0.25
+
+
+        saxTrumpetGroup = createSpriteNode(imageName: "sax hitbox", scale: 1, position: CGPoint(x: 580, y: 450))
+        addChild(saxTrumpetGroup)
+
+        saxNode = createSpriteNode(imageName: "sax", scale: 0.3, position: CGPoint(x: -50, y: 50))
+        saxNode.xScale = -0.3
+        saxNode.zRotation = -0.6
         saxNode.run(SKAction.repeatForever(createAnimation(atlasName: "sax-textures")))
 
-        guitarNode = createSpriteNode(imageName: "guitar", scale: 0.22, position: CGPoint(x: -80, y: 315))
-        guitarNode.zRotation = 0.25
-        //        guitarNode.run(SKAction.repeatForever(createAnimation(atlasName: "guitar-textures")))
+        trumpetNode = createSpriteNode(imageName: "trumpet", scale: 0.15, position: CGPoint(x: 40, y: -50))
+        trumpetNode.zRotation = 0.2
+        trumpetNode.run(SKAction.repeatForever(createAnimation(atlasName: "trumpet-textures")))
 
-        bassNode = createSpriteNode(imageName: "bass", scale: 0.22, position: CGPoint(x: 510, y: 325))
+        saxTrumpetGroup.addChild(saxNode)
+        saxTrumpetGroup.addChild(trumpetNode)
+
+
+        bassGroup = createSpriteNode(imageName: "Bass hitbox", scale: 1, position: CGPoint(x: -180, y: 555))
+        addChild(bassGroup)
+
+        bassNode = createSpriteNode(imageName: "bass", scale: 0.15, position: CGPoint(x: 70, y: 30))
+        bassNode.run(SKAction.repeatForever(createAnimation(atlasName: "bass-textures")))
+
+        bassGroup.addChild(bassNode)
+
+
+        guitarGroup = createSpriteNode(imageName: "Guitar hitbox", scale: 1, position: CGPoint(x: 150, y: 280))
+        addChild(guitarGroup)
+
+        guitarNode = createSpriteNode(imageName: "guitar", scale: 0.15, position: CGPoint(x: 0, y: 30))
+        //        guitarNode.zRotation = 0.15
+        guitarNode.run(SKAction.repeatForever(createAnimation(atlasName: "guitar-textures")))
+        guitarGroup.addChild(guitarNode)
+
 
 
 
@@ -259,7 +309,7 @@ class GameScene:SKScene {
         pianoHarmonicaAudio = createAudio(audioName: "other", audioExtension: "m4a", forNode: pianoSynthNode)
 
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-            let increment = (0.1 / TimeInterval(7030.3731)) * 100.0
+            let increment = (0.1 / TimeInterval(100.3731)) * 100.0
             self.progress += CGFloat(increment)
 
             if self.progress >= 100 {
@@ -306,8 +356,8 @@ class GameScene:SKScene {
             }
 
             let trackerDistance = min(distance, maxDistance - touchTrackerNode.frame.width / 2)
-            let trackerPositionX = thumbstickNode.position.x + (trackerDistance * cos(atan2(positionInThumbstick.y, positionInThumbstick.x)))
-            let trackerPositionY = thumbstickNode.position.y + (trackerDistance * sin(atan2(positionInThumbstick.y, positionInThumbstick.x)))
+            let trackerPositionX = thumbstickNode.position.x - 5 + (trackerDistance * cos(atan2(positionInThumbstick.y, positionInThumbstick.x)))
+            let trackerPositionY = thumbstickNode.position.y + 5 + (trackerDistance * sin(atan2(positionInThumbstick.y, positionInThumbstick.x)))
             touchTrackerNode.position = CGPoint(x: trackerPositionX, y: trackerPositionY)
 
         }
@@ -320,7 +370,7 @@ class GameScene:SKScene {
             playerPosX = 0
             playerPosY = 0
             thumbstickTouch = nil
-            touchTrackerNode.position = thumbstickNode.position
+            touchTrackerNode.position = CGPoint(x: thumbstickNode.position.x - 5, y: thumbstickNode.position.y + 5)
         }
 
         let playerIdle = SKSpriteNode(imageNamed: "player")
@@ -340,11 +390,12 @@ class GameScene:SKScene {
         playerCam.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y)
 
         //        UI Relative to Camera
-        uiPanel.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y - 300)
-        thumbstickNode.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y-300)
-        progressBar.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y - 200)
-        nextBtn.position = CGPoint(x: playerNode.position.x + 130, y: playerNode.position.y - 300)
-        backBtn.position = CGPoint(x: playerNode.position.x - 130, y: playerNode.position.y - 300)
+        uiPanel.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y - 400)
+        thumbstickNode.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y-400)
+        progressBar.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y - 250)
+        progressPlaceholder.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y - 245)
+        nextBtn.position = CGPoint(x: playerNode.position.x + 180, y: playerNode.position.y - 400)
+        backBtn.position = CGPoint(x: playerNode.position.x - 180, y: playerNode.position.y - 400)
 
 
         if playerPosX > 0 {
@@ -353,8 +404,24 @@ class GameScene:SKScene {
             playerNode.xScale = -abs(playerNode.xScale)
         }
 
-        let progressBarWidth = min(progress * (size.width - 50 / 100), size.width - 50)
-        progressBar.path = UIBezierPath(rect: CGRect(x: -173, y: 0, width: progressBarWidth, height: 5)).cgPath
+//        let progressBarWidth = min(progress * (size.width - 220 / 100), size.width + 50)
+//        progressBar.path = UIBezierPath(rect: CGRect(x: -220, y: 0, width: progressBarWidth, height: 8)).cgPath
+
+        let progressBarWidth = min(progress * (size.width - 210 / 100), size.width + 35)
+
+        let progressBarPath = UIBezierPath(rect: CGRect(x: -220, y: 0, width: progressBarWidth, height: 8))
+
+        let circleX = progressBarWidth - 220 + 8
+        let circleY = 4 
+        let circleRadius = 8
+
+        let circleRect = CGRect(x: Int(circleX) - circleRadius, y: circleY - circleRadius, width: circleRadius * 2, height: circleRadius * 2)
+
+        let circlePath = UIBezierPath(ovalIn: circleRect)
+
+        progressBarPath.append(circlePath)
+
+        progressBar.path = progressBarPath.cgPath
 
 
         allAudioNodes = self.getAllAudioNodes()
