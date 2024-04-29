@@ -9,6 +9,46 @@ import SpriteKit
 import GameController
 import AVFoundation
 
+extension CGPoint {
+    func distance(to point: CGPoint) -> CGFloat {
+        return sqrt(pow(point.x - x, 2) + pow(point.y - y, 2))
+    }
+}
+
+extension SKScene {
+    func getAllAudioNodes() -> [SKAudioNode] {
+         var audioNodes = [SKAudioNode]()
+
+         // Define a recursive function to traverse child nodes
+         func findAudioNodes(node: SKNode) {
+             for childNode in node.children {
+                 if let audioNode = childNode as? SKAudioNode {
+                     audioNodes.append(audioNode)
+                 }
+                 // Recursively call the function for each child node
+                 findAudioNodes(node: childNode)
+             }
+         }
+
+         // Start the recursive traversal from the scene's root node
+         findAudioNodes(node: self)
+
+         return audioNodes
+     }
+//    func getAllAudioNodes() -> [SKAudioNode] {
+//        var audioNodes = [SKAudioNode]()
+//
+//        // Recursively traverse through all child nodes
+//        enumerateChildNodes(withName: "*") { node, _ in
+//            if let audioNode = node as? SKAudioNode {
+//                audioNodes.append(audioNode)
+//            }
+//        }
+//
+//        return audioNodes
+//    }
+}
+
 class GameScene:SKScene {
     var bgNode: SKSpriteNode!
 
@@ -45,18 +85,19 @@ class GameScene:SKScene {
     var bongoNode: SKSpriteNode!
 
     // Audio Node
-        var guitarAudio: SKAudioNode!
-        var bassAudio: SKAudioNode!
-        var percussionAudio: SKAudioNode!
-        var SaxTrumpetAudio: SKAudioNode!
-        var pianoHarmonicaAudio: SKAudioNode!
-        var completeAudio: SKAudioNode!
-//    var guitarAudio: AVAudioPlayer!
-//    var bassAudio: AVAudioPlayer!
-//    var percussionAudio: AVAudioPlayer!
-//    var SaxTrumpetAudio: AVAudioPlayer!
-//    var pianoHarmonicaAudio: AVAudioPlayer!
-//    var completeAudio: AVAudioPlayer!
+    var allAudioNodes: Array<SKAudioNode>!
+    var guitarAudio: SKAudioNode!
+    var bassAudio: SKAudioNode!
+    var percussionAudio: SKAudioNode!
+    var SaxTrumpetAudio: SKAudioNode!
+    var pianoHarmonicaAudio: SKAudioNode!
+    var completeAudio: SKAudioNode!
+    //    var guitarAudio: AVAudioPlayer!
+    //    var bassAudio: AVAudioPlayer!
+    //    var percussionAudio: AVAudioPlayer!
+    //    var SaxTrumpetAudio: AVAudioPlayer!
+    //    var pianoHarmonicaAudio: AVAudioPlayer!
+    //    var completeAudio: AVAudioPlayer!
 
     var bgAudioPlayer: AVAudioPlayer!
 
@@ -86,36 +127,120 @@ class GameScene:SKScene {
         return animations
     }
 
-        func createAudio(audioName: String, audioExtension: String, forNode: SKSpriteNode) -> SKAudioNode? {
-            if let audioURL = Bundle.main.url(forResource: audioName, withExtension: audioExtension) {
-                let audioNode = SKAudioNode(url: audioURL)
-                audioNode.isPositional = true
-                audioNode.position = forNode.position
-                audioNode.run(SKAction.changeVolume(to: 1, duration: 0))
-                forNode.addChild(audioNode)
-                return audioNode
-            } else {
-                return nil
-            }
+    func createAudio(audioName: String, audioExtension: String, forNode: SKSpriteNode) -> SKAudioNode? {
+        if let audioURL = Bundle.main.url(forResource: audioName, withExtension: audioExtension) {
+            let audioNode = SKAudioNode(url: audioURL)
+            audioNode.isPositional = true
+            audioNode.position = forNode.position
+            audioNode.run(SKAction.changeVolume(to: 1, duration: 0))
+            forNode.addChild(audioNode)
+            return audioNode
+        } else {
+            return nil
         }
+    }
 
-//    func createAudio(audioName: String, audioExtension: String, forNode: SKSpriteNode) -> AVAudioPlayer? {
-//        if let audioURL = Bundle.main.url(forResource: audioName, withExtension: audioExtension) {
-//            do {
-//                let audioPlayer = try AVAudioPlayer(contentsOf: audioURL)
-//                audioPlayer.prepareToPlay()
+    //    func volumeController(audioNode: SKAudioNode) {
+    //        let distanceToAudio = playerNode.position.distance(to: audioNode.position)
+    //        //        print(distanceToAudio)
+    //
+    //        let maxDistance: CGFloat = 300
+    //        let minDistance: CGFloat = 0
+    //
+    //        let maxVolume: Float = 5
+    //        let minVolume: Float = 1
+    //
+    //        var volumeLevel = maxVolume
+    //        if distanceToAudio > minDistance && distanceToAudio < maxDistance {
+    //            let distanceRange = maxDistance - minDistance
+    //            let volumeRange = maxVolume - minVolume
+    //            let distanceRatio = (distanceToAudio - minDistance) / distanceRange
+    //            volumeLevel = maxVolume - (Float(distanceRatio) * volumeRange)
+    //        } else if distanceToAudio >= maxDistance {
+    //            volumeLevel = minVolume
+    //        }
+    //
+    //        print(volumeLevel)
+    //        audioNode.run(SKAction.changeVolume(to: volumeLevel, duration: 0))
+    //
+    //    }
+
+    func volumeController(allAudioNodes: [SKAudioNode]) {
+
+//        let maxDistance: CGFloat = 200
 //
-//                return audioPlayer
-//            } catch {
-//                // Handle the error
-//                print("Failed to initialize AVAudioPlayer: \(error)")
-//            }
-//        } else {
-//            // Handle the case where the audio file URL is nil
-//            print("Failed to find audio file")
-//        }
-//        return nil // Return nil if audio player couldn't be created
-//    }
+//           for audioNode in allAudioNodes {
+//               let distanceToAudio = playerNode.position.distance(to: audioNode.position)
+//               var volumeLevel: Float
+//
+//               print(distanceToAudio)
+//
+//               if distanceToAudio < maxDistance {
+//                   // If the player is close to this audio node, set its volume to 1
+//                   volumeLevel = 1.0
+//               } else {
+//                   // If the player is far from this audio node, decrease its volume
+//                   let maxVolume: Float = 1
+//                   let minVolume: Float = 0.3
+//                   let distanceRange = maxDistance
+//                   let volumeRange = maxVolume - minVolume
+////                   let distanceRatio = distanceToAudio / distanceRange
+//                                      let distanceRatio = min(1.0, (distanceToAudio / distanceRange)) // Ensure distance ratio is <= 1
+//                   volumeLevel = maxVolume - (Float(distanceRatio) * volumeRange)
+////                   print("tst")
+//               }
+//
+//               print("Volume of \(audioNode.name ?? "no audio") = \(volumeLevel)")
+//               audioNode.run(SKAction.changeVolume(to: volumeLevel, duration: 0.1))
+//           }
+        for audioNode in allAudioNodes {
+            let distanceToAudio = playerNode.position.distance(to: audioNode.position)
+
+            let maxDistance: CGFloat = 300
+            let minDistance: CGFloat = 50
+
+            let maxVolume: Float = 5
+            let minVolume: Float = 0.3
+
+            var volumeLevel = maxVolume
+
+            let distanceRange = maxDistance - minDistance
+            let volumeRange = maxVolume - minVolume
+            let distanceRatio = (distanceToAudio - minDistance) / distanceRange
+
+            if distanceToAudio > minDistance && distanceToAudio < maxDistance {
+//                volumeLevel = maxVolume
+                volumeLevel = maxVolume - (Float(distanceRatio) * volumeRange)
+            } else if distanceToAudio >= maxDistance {
+                volumeLevel = maxVolume - (Float(distanceRatio) * volumeRange)
+
+                if volumeLevel < minVolume {
+                    volumeLevel = minVolume
+                }
+            }
+
+            print("Volume of \(audioNode.parent?.name ?? "no audio") = \(volumeLevel)")
+            audioNode.run(SKAction.changeVolume(to: volumeLevel, duration: 0.1))
+        }
+    }
+
+    //    func createAudio(audioName: String, audioExtension: String, forNode: SKSpriteNode) -> AVAudioPlayer? {
+    //        if let audioURL = Bundle.main.url(forResource: audioName, withExtension: audioExtension) {
+    //            do {
+    //                let audioPlayer = try AVAudioPlayer(contentsOf: audioURL)
+    //                audioPlayer.prepareToPlay()
+    //
+    //                return audioPlayer
+    //            } catch {
+    //                // Handle the error
+    //                print("Failed to initialize AVAudioPlayer: \(error)")
+    //            }
+    //        } else {
+    //            // Handle the case where the audio file URL is nil
+    //            print("Failed to find audio file")
+    //        }
+    //        return nil // Return nil if audio player couldn't be created
+    //    }
 
     override func didMove(to view: SKView) {
         bgNode = createSpriteNode(imageName: "bg-texture", scale: 1, position: CGPoint(x:size.width / 2 + 45, y: size.height / 2 + 70))
@@ -213,27 +338,12 @@ class GameScene:SKScene {
         //    Vocals Audio -> Gambar Sax + trumpet
         //    Other Audio -> Gambar Piano + Synth + Harmonica
         //                Audio Set Up
-        if let bgAudioURL = Bundle.main.url(forResource: "Stevie Wonder - Spain", withExtension: "mp3") {
-            let bgAudioNode = SKAudioNode(url: bgAudioURL)
-            bgAudioNode.run(SKAction.changeVolume(to: 1, duration: 0))
-            addChild(bgAudioNode)
-        }
-
-        //        let audioFile = "Stevie Wonder - Spain.mp3" // Replace with your audio file name
-        //        if let audioURL = Bundle.main.url(forResource: audioFile, withExtension: nil) {
-        //            do {
-        //                bgAudioPlayer = try AVAudioPlayer(contentsOf: audioURL)
-        //                // Audio player initialized successfully, continue with your logic
-        //
-        //                print(bgAudioPlayer.duration)
-        //            } catch {
-        //                // Handle the error
-        //                print("Failed to initialize AVAudioPlayer: \(error)")
-        //            }
-        //        } else {
-        //            // Handle the case where the audio file URL is nil
-        //            print("Failed to find audio file: \(audioFile)")
+        //        if let bgAudioURL = Bundle.main.url(forResource: "Stevie Wonder - Spain", withExtension: "mp3") {
+        //            let bgAudioNode = SKAudioNode(url: bgAudioURL)
+        //            bgAudioNode.run(SKAction.changeVolume(to: 1, duration: 0))
+        //            addChild(bgAudioNode)
         //        }
+
         percussionAudio = createAudio(audioName: "drum", audioExtension: "m4a", forNode: drumNode)
         bassAudio = createAudio(audioName: "bass", audioExtension: "m4a", forNode: bassNode)
         guitarAudio = createAudio(audioName: "guitar", audioExtension: "m4a", forNode: guitarNode)
@@ -241,8 +351,8 @@ class GameScene:SKScene {
         pianoHarmonicaAudio = createAudio(audioName: "other", audioExtension: "m4a", forNode: pianoSynthNode)
 
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-            //            let increment = (0.1 / TimeInterval(703.3731)) * 100.0
-            let increment = (0.1 / TimeInterval(300)) * 100.0
+                        let increment = (0.1 / TimeInterval(703.3731)) * 100.0
+//            let increment = (0.1 / TimeInterval(300)) * 100.0
             self.progress += CGFloat(increment)
 
             if self.progress >= 100 {
@@ -341,6 +451,21 @@ class GameScene:SKScene {
 
         let progressBarWidth = min(progress * (size.width - 50 / 100), size.width - 50)
         progressBar.path = UIBezierPath(rect: CGRect(x: -173, y: 0, width: progressBarWidth, height: 5)).cgPath
+
+
+        allAudioNodes = self.getAllAudioNodes()
+
+//        print(allAudioNodes.count)
+
+        // Volume Control
+        volumeController(allAudioNodes: allAudioNodes)
+
+        //        volumeController(audioNode: percussionAudio)
+        //        volumeController(audioNode: bassAudio)
+        //        volumeController(audioNode: guitarAudio)
+        //        volumeController(audioNode: SaxTrumpetAudio)
+        //        volumeController(audioNode: pianoHarmonicaAudio)
+
 
     }
 }
