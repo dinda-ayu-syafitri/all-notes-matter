@@ -302,11 +302,11 @@ class GameScene:SKScene {
         //            addChild(bgAudioNode)
         //        }
 
-        percussionAudio = createAudio(audioName: "drum", audioExtension: "m4a", forNode: drumNode)
-        bassAudio = createAudio(audioName: "bass", audioExtension: "m4a", forNode: bassNode)
-        guitarAudio = createAudio(audioName: "guitar", audioExtension: "m4a", forNode: guitarNode)
-        SaxTrumpetAudio = createAudio(audioName: "vocals", audioExtension: "m4a", forNode: saxNode)
-        pianoHarmonicaAudio = createAudio(audioName: "other", audioExtension: "m4a", forNode: pianoSynthNode)
+        percussionAudio = createAudio(audioName: "drum", audioExtension: "m4a", forNode: percussionGroup)
+        bassAudio = createAudio(audioName: "bass", audioExtension: "m4a", forNode: bassGroup)
+        guitarAudio = createAudio(audioName: "guitar", audioExtension: "m4a", forNode: guitarGroup)
+        SaxTrumpetAudio = createAudio(audioName: "vocals", audioExtension: "m4a", forNode: saxTrumpetGroup)
+        pianoHarmonicaAudio = createAudio(audioName: "other", audioExtension: "m4a", forNode: pianoHarmonicaGroup)
 
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             let increment = (0.1 / TimeInterval(100.3731)) * 100.0
