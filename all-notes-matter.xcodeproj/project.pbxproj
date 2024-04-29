@@ -74,7 +74,6 @@
 				20E43D7C2BDCEA8900715972 /* Assets */,
 				20E43D792BDCA62600715972 /* View */,
 				20D8D9902BDA4E8E003148F8 /* all_notes_matterApp.swift */,
-				20D8D9922BDA4E8E003148F8 /* ContentView.swift */,
 				20D8D9942BDA4E90003148F8 /* Assets.xcassets */,
 				20D8D9962BDA4E90003148F8 /* Preview Content */,
 			);
@@ -96,6 +95,7 @@
 				47A25F582BDF4F14004BE6BA /* CharacterMenu.swift */,
 				20E43D7A2BDCA68400715972 /* GameScene.swift */,
 				2089E4CC2BE0151D0046340D /* SplashScreen.swift */,
+				20D8D9922BDA4E8E003148F8 /* ContentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

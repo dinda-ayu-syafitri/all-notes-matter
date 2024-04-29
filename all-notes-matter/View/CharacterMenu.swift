@@ -39,7 +39,11 @@ struct CharacterMenu: View {
                     
                     Spacer()
                     
-                    Image("play")
+                    NavigationLink(destination: ContentView()) {
+                        Image("play")
+                    }
+                    .navigationBarBackButtonHidden()
+//                    Image("play")
                     
                     Spacer()
                     
