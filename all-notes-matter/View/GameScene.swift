@@ -128,6 +128,18 @@ class GameScene:SKScene {
         }
     }
 
+
+//    func back5Sec() {
+//        allAudioNodes = self.getAllAudioNodes()
+//
+//        for audioNode in allAudioNodes {
+//            audioNode.setCurrentTime(0.5)
+//
+//             // Start playing the audio node
+//             audioNode.run(SKAction.play())
+//        }
+//    }
+
     func volumeController(allAudioNodes: [SKAudioNode]) {
 
         for audioNode in allAudioNodes {
@@ -210,14 +222,14 @@ class GameScene:SKScene {
         // Thumbstick
         thumbstickNode = createSpriteNode(imageName: "thumbpad", scale: 0.8, position: CGPoint(x: playerNode.position.x, y: playerNode.position.y - 400))
         thumbstickNode.zPosition = 60
-//        thumbstickNode.fillColor = UIColor(red: 0.22, green: 0.22, blue: 0.22, alpha: 1)
-//        thumbstickNode.strokeColor = UIColor.clear
+        //        thumbstickNode.fillColor = UIColor(red: 0.22, green: 0.22, blue: 0.22, alpha: 1)
+        //        thumbstickNode.strokeColor = UIColor.clear
         addChild(thumbstickNode)
 
         //Thumb Tracker
         touchTrackerNode = createSpriteNode(imageName: "touch tracker", scale: 1.8, position: CGPoint(x: thumbstickNode.position.x - 5, y: thumbstickNode.position.y + 5))
-//        touchTrackerNode.fillColor = UIColor(red: 0.95, green: 0.57, blue: 0.02, alpha: 1)
-//        touchTrackerNode.strokeColor = UIColor.clear
+        //        touchTrackerNode.fillColor = UIColor(red: 0.95, green: 0.57, blue: 0.02, alpha: 1)
+        //        touchTrackerNode.strokeColor = UIColor.clear
         touchTrackerNode.zPosition = 70
         addChild(touchTrackerNode)
 
@@ -309,7 +321,7 @@ class GameScene:SKScene {
         pianoHarmonicaAudio = createAudio(audioName: "other", audioExtension: "m4a", forNode: pianoHarmonicaGroup)
 
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-            let increment = (0.1 / TimeInterval(100.3731)) * 100.0
+            let increment = (0.1 / TimeInterval(7030.3731)) * 100.0
             self.progress += CGFloat(increment)
 
             if self.progress >= 100 {
@@ -321,19 +333,30 @@ class GameScene:SKScene {
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
 
-        if thumbstickNode.contains(touch.location(in: self)) {
-            thumbstickTouch = touch
+        for touch in touches {
+            if thumbstickNode.contains(touch.location(in: self)) {
+                thumbstickTouch = touch
 
-            let playerWalking = SKSpriteNode(imageNamed: "player2")
-            playerWalking.setScale(0.2)
-            playerWalking.position = playerNode.position
-            playerNode.removeFromParent()
-            playerNode = playerWalking
-            addChild(playerNode)
-            playerNode.run(SKAction.repeatForever(createAnimation(atlasName: "player-walking")))
+                let playerWalking = SKSpriteNode(imageNamed: "player2")
+                playerWalking.setScale(0.2)
+                playerWalking.position = playerNode.position
+                playerNode.removeFromParent()
+                playerNode = playerWalking
+                addChild(playerNode)
+                playerNode.run(SKAction.repeatForever(createAnimation(atlasName: "player-walking")))
+            }
+
+            if backBtn.contains(touch.location(in: self)) {
+                print("Back Pressed")
+            }
+            if nextBtn.contains(touch.location(in: self)) {
+                print("Next Pressed")
+            }
+
         }
+
+
 
 
     }
@@ -404,15 +427,15 @@ class GameScene:SKScene {
             playerNode.xScale = -abs(playerNode.xScale)
         }
 
-//        let progressBarWidth = min(progress * (size.width - 220 / 100), size.width + 50)
-//        progressBar.path = UIBezierPath(rect: CGRect(x: -220, y: 0, width: progressBarWidth, height: 8)).cgPath
+        //        let progressBarWidth = min(progress * (size.width - 220 / 100), size.width + 50)
+        //        progressBar.path = UIBezierPath(rect: CGRect(x: -220, y: 0, width: progressBarWidth, height: 8)).cgPath
 
         let progressBarWidth = min(progress * (size.width - 210 / 100), size.width + 35)
 
         let progressBarPath = UIBezierPath(rect: CGRect(x: -220, y: 0, width: progressBarWidth, height: 8))
 
         let circleX = progressBarWidth - 220 + 8
-        let circleY = 4 
+        let circleY = 4
         let circleRadius = 8
 
         let circleRect = CGRect(x: Int(circleX) - circleRadius, y: circleY - circleRadius, width: circleRadius * 2, height: circleRadius * 2)
@@ -422,6 +445,8 @@ class GameScene:SKScene {
         progressBarPath.append(circlePath)
 
         progressBar.path = progressBarPath.cgPath
+
+        //        print(progress)
 
 
         allAudioNodes = self.getAllAudioNodes()
