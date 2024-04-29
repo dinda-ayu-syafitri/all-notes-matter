@@ -13,40 +13,17 @@ struct CharacterMenu: View {
     let sceneWidth = UIScreen.main.bounds.width
     let sceneHeight = UIScreen.main.bounds.height
 
-    func createSpriteNode(imageName:String, scale:CGFloat, position:CGPoint ) -> SKSpriteNode {
-        let node = SKSpriteNode(imageNamed: imageName)
-        node.setScale(scale)
-        node.position = position
-        //        parent.addChild(node)
+    var scene: SKScene {
+        let scene = CharacterCustomScene()
 
-        return node
+        scene.size = CGSize(width: sceneWidth, height: sceneHeight)
+        scene.scaleMode = .fill
+        scene.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0)
+
+        return scene
     }
 
-    func createAnimation(atlasName: String) -> SKAction {
-
-        let textureAtlas = SKTextureAtlas(named: atlasName)
-
-
-        var textures:[SKTexture] = []
-
-        for i in textureAtlas.textureNames {
-            textures.append(textureAtlas.textureNamed(i))
-        }
-
-        let animations = SKAction.animate(with: textures, timePerFrame: 0.2)
-
-        return animations
-    }
-
-//    var scene: SKScene {
-//        let scene = GameScene()
-//
-//        scene.size = CGSize(width: sceneWidth, height: sceneHeight)
-//        scene.scaleMode = .fill
-//        scene.backgroundColor = UIColor(red: 0.12, green: 0.12, blue: 0.12, alpha: 1)
-//
-//        return scene
-//    }
+    @State var isPlayerRed = true
 
     var body: some View {
         NavigationView {
@@ -62,21 +39,30 @@ struct CharacterMenu: View {
                     Image("spot")
                         .ignoresSafeArea()
                         .overlay(
-                            HStack{
-                                Image("back").padding(.top, 240)
+                            HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/){
+                                Button(action: {isPlayerRed.toggle()}, label: {
+                                    Image("back")
+                                })
                                 Spacer()
-//                                SpriteView(scene: scene)
-//                                     .frame(width: sceneWidth, height: sceneHeight, alignment: .center)
-//                                Image("orang").padding(.top, 240)
+                                //                                SpriteView(scene: scene)
+                                //                                     .frame(width: sceneWidth, height: sceneHeight, alignment: .center)
+                                if isPlayerRed {
+                                    Image("red-player").resizable().scaledToFit().frame(width: 100)
+                                } else {
+                                    Image("blue-player").resizable().scaledToFit().frame(width: 100)
+                                }
+
                                 Spacer()
-                                Image("next").padding(.top, 240)
-                            }.padding(80)
+                                Button(action: {isPlayerRed.toggle()}, label: {
+                                    Image("next")
+                                })
+                            }.padding(.top,180).padding(.horizontal, 50)
 
                         )
 
                     Spacer()
 
-                    NavigationLink(destination: ContentView()) {
+                    NavigationLink(destination: ContentView(isPlayerRed: $isPlayerRed)) {
                         Image("play")
                     }
                     .navigationBarBackButtonHidden()
