@@ -11,7 +11,6 @@ import AVFoundation
 //
 struct ContentView: View {
 
-
     let sceneWidth = UIScreen.main.bounds.width
     let sceneHeight = UIScreen.main.bounds.height
 

@@ -11,6 +11,8 @@
 		20D8D9932BDA4E8E003148F8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8D9922BDA4E8E003148F8 /* ContentView.swift */; };
 		20D8D9952BDA4E90003148F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20D8D9942BDA4E90003148F8 /* Assets.xcassets */; };
 		20D8D9982BDA4E90003148F8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20D8D9972BDA4E90003148F8 /* Preview Assets.xcassets */; };
+		47A25F572BDF4909004BE6BA /* StartMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A25F562BDF4909004BE6BA /* StartMenu.swift */; };
+		47A25F592BDF4F14004BE6BA /* CharacterMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A25F582BDF4F14004BE6BA /* CharacterMenu.swift */; };
 		20E43D7B2BDCA68400715972 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E43D7A2BDCA68400715972 /* GameScene.swift */; };
 		20E43D842BDCEAD400715972 /* bass.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 20E43D7E2BDCEAD200715972 /* bass.m4a */; };
 		20E43D852BDCEAD400715972 /* vocals.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 20E43D7F2BDCEAD200715972 /* vocals.m4a */; };
@@ -26,6 +28,8 @@
 		20D8D9922BDA4E8E003148F8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		20D8D9942BDA4E90003148F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20D8D9972BDA4E90003148F8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		47A25F562BDF4909004BE6BA /* StartMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenu.swift; sourceTree = "<group>"; };
+		47A25F582BDF4F14004BE6BA /* CharacterMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMenu.swift; sourceTree = "<group>"; };
 		20E43D7A2BDCA68400715972 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		20E43D7E2BDCEAD200715972 /* bass.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = bass.m4a; sourceTree = "<group>"; };
 		20E43D7F2BDCEAD200715972 /* vocals.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = vocals.m4a; sourceTree = "<group>"; };
@@ -69,6 +73,8 @@
 				20E43D792BDCA62600715972 /* View */,
 				20D8D9902BDA4E8E003148F8 /* all_notes_matterApp.swift */,
 				20D8D9922BDA4E8E003148F8 /* ContentView.swift */,
+				47A25F562BDF4909004BE6BA /* StartMenu.swift */,
+				47A25F582BDF4F14004BE6BA /* CharacterMenu.swift */,
 				20D8D9942BDA4E90003148F8 /* Assets.xcassets */,
 				20D8D9962BDA4E90003148F8 /* Preview Content */,
 			);
@@ -188,9 +194,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47A25F592BDF4F14004BE6BA /* CharacterMenu.swift in Sources */,
 				20E43D7B2BDCA68400715972 /* GameScene.swift in Sources */,
 				20D8D9932BDA4E8E003148F8 /* ContentView.swift in Sources */,
 				20D8D9912BDA4E8E003148F8 /* all_notes_matterApp.swift in Sources */,
+				47A25F572BDF4909004BE6BA /* StartMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +340,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -361,6 +370,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
