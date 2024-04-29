@@ -315,7 +315,7 @@ class GameScene:SKScene {
         //        }
 
         percussionAudio = createAudio(audioName: "drum", audioExtension: "m4a", forNode: percussionGroup)
-        bassAudio = createAudio(audioName: "bass", audioExtension: "m4a", forNode: bassGroup)
+        bassAudio = createAudio(audioName: "bass2", audioExtension: "m4a", forNode: bassGroup)
         guitarAudio = createAudio(audioName: "guitar", audioExtension: "m4a", forNode: guitarGroup)
         SaxTrumpetAudio = createAudio(audioName: "vocals", audioExtension: "m4a", forNode: saxTrumpetGroup)
         pianoHarmonicaAudio = createAudio(audioName: "other", audioExtension: "m4a", forNode: pianoHarmonicaGroup)

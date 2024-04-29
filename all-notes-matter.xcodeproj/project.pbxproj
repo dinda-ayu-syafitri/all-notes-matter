@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2089E4CD2BE0151D0046340D /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2089E4CC2BE0151D0046340D /* SplashScreen.swift */; };
+		2089E4CF2BE01CE00046340D /* bass2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 2089E4CE2BE01CE00046340D /* bass2.m4a */; };
 		20D8D9912BDA4E8E003148F8 /* all_notes_matterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8D9902BDA4E8E003148F8 /* all_notes_matterApp.swift */; };
 		20D8D9932BDA4E8E003148F8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8D9922BDA4E8E003148F8 /* ContentView.swift */; };
 		20D8D9952BDA4E90003148F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20D8D9942BDA4E90003148F8 /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		2089E4CC2BE0151D0046340D /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		2089E4CE2BE01CE00046340D /* bass2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = bass2.m4a; sourceTree = "<group>"; };
 		20D8D98D2BDA4E8E003148F8 /* all-notes-matter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "all-notes-matter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20D8D9902BDA4E8E003148F8 /* all_notes_matterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = all_notes_matterApp.swift; sourceTree = "<group>"; };
 		20D8D9922BDA4E8E003148F8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 		20E43D7D2BDCEA9E00715972 /* AudioSrc */ = {
 			isa = PBXGroup;
 			children = (
+				2089E4CE2BE01CE00046340D /* bass2.m4a */,
 				20E43D7E2BDCEAD200715972 /* bass.m4a */,
 				20E43D812BDCEAD300715972 /* drum.m4a */,
 				20E43D832BDCEAD400715972 /* guitar.m4a */,
@@ -179,6 +182,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2089E4CF2BE01CE00046340D /* bass2.m4a in Resources */,
 				20D8D9982BDA4E90003148F8 /* Preview Assets.xcassets in Resources */,
 				20E43D842BDCEAD400715972 /* bass.m4a in Resources */,
 				20E43D852BDCEAD400715972 /* vocals.m4a in Resources */,
