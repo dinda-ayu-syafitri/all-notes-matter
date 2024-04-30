@@ -56,13 +56,16 @@ class GameScene: SKScene {
     var playerNode: SKSpriteNode!
     var playerPosX: CGFloat = 0
     var playerPosY: CGFloat = 0
-    
+    var playerSpotlight: SKSpriteNode!
+    var playerspotlightArrow: SKSpriteNode!
+
     //    Player Controller
     var virtualController: GCVirtualController?
     var thumbstickNode: SKSpriteNode!
     var thumbstickTouch: UITouch?
     var touchTrackerNode: SKSpriteNode!
-    
+
+
     // Instrument Group Node
     var bassGroup: SKSpriteNode!
     var percussionGroup: SKSpriteNode!
@@ -194,9 +197,15 @@ class GameScene: SKScene {
             playerNode.run(SKAction.repeatForever(createAnimation(atlasName: "blue-idle")))
         }
 
-        
         addChild(playerNode)
-        
+
+        playerSpotlight = createSpriteNode(imageName: "player-shadow", scale: 1, position: CGPoint(x: 0, y: -290))
+        playerSpotlight.zPosition = -1
+        playerNode.addChild(playerSpotlight)
+
+        playerspotlightArrow = createSpriteNode(imageName: "player-arrow", scale: 1, position: CGPoint(x: 0, y: -340))
+        playerNode.addChild(playerspotlightArrow)
+
         
         // UI Set Up
         uiPanel = SKShapeNode(rectOf: CGSize(width: size.width * 2, height: 450))
@@ -366,6 +375,12 @@ class GameScene: SKScene {
                     playerNode.run(SKAction.repeatForever(createAnimation(atlasName: "blue-walk")))
                 }
 
+                playerspotlightArrow.removeFromParent()
+
+                playerSpotlight = createSpriteNode(imageName: "player-shadow", scale: 0.5, position: CGPoint(x: 0, y: -200))
+                playerSpotlight.zPosition = -1
+                playerNode.addChild(playerSpotlight)
+
             }
             
             if backBtn.contains(touch.location(in: self)) {
@@ -435,7 +450,10 @@ class GameScene: SKScene {
             playerNode.run(SKAction.repeatForever(createAnimation(atlasName: "blue-idle")))
         }
 
-        
+        playerSpotlight = createSpriteNode(imageName: "player-shadow", scale: 1, position: CGPoint(x: 0, y: -290))
+        playerSpotlight.zPosition = -1
+        playerNode.addChild(playerSpotlight)
+
     }
     
     override func update(_ currentTime: TimeInterval) {
