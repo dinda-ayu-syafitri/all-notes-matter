@@ -40,7 +40,8 @@ class GameScene: SKScene {
 
     //    var updatePlayerRedState: ((Bool) -> Void)?
     var isPlayerRed: Bool!
-    
+//    var isGamePaused: Bool!
+
     var bgNode: SKSpriteNode!
     
     //    Camera
@@ -199,8 +200,7 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         
         bgNode = createSpriteNode(imageName: "bg-big", scale: 1, position: CGPoint(x:size.width / 2, y: size.height / 2))
-        
-        
+
         playerCam.setScale(1.3)
         camera = playerCam
         
@@ -503,7 +503,14 @@ class GameScene: SKScene {
         
         // Volume Control
         volumeController(allAudioNodes: allAudioNodes)
-        
+
+        if isPaused {
+            for audioNode in allAudioNodes {
+                audioNode.run(SKAction.pause())
+            }
+            print("game paused")
+        }
+
         
     }
 
