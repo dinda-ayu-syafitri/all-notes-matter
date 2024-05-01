@@ -58,6 +58,7 @@ class GameScene: SKScene {
     var playerPosY: CGFloat = 0
     var playerSpotlight: SKSpriteNode!
     var playerspotlightArrow: SKSpriteNode!
+    var playerSpotlight2: SKSpriteNode!
 
     //    Player Controller
     var virtualController: GCVirtualController?
@@ -205,36 +206,40 @@ class GameScene: SKScene {
         
         // Player Set Up
         if isPlayerRed {
-            playerNode = createSpriteNode(imageName: "red-player", scale: 0.2, position: CGPoint(x: size.width / 2, y: 500))
+            playerNode = createSpriteNode(imageName: "red-player", scale: 0.25, position: CGPoint(x: size.width / 2, y: 500))
             playerNode.run(SKAction.repeatForever(createAnimation(atlasName: "red-idle")))
         } else {
-            playerNode = createSpriteNode(imageName: "blue-player", scale: 0.2, position: CGPoint(x: size.width / 2, y: 500))
+            playerNode = createSpriteNode(imageName: "blue-player", scale: 0.25, position: CGPoint(x: size.width / 2, y: 500))
             playerNode.run(SKAction.repeatForever(createAnimation(atlasName: "blue-idle")))
         }
 
         addChild(playerNode)
 
-        playerSpotlight = createSpriteNode(imageName: "player-shadow", scale: 1, position: CGPoint(x: 0, y: -290))
+        playerSpotlight = createSpriteNode(imageName: "player-shadow", scale: 2.5, position: CGPoint(x: 0, y: -290))
         playerSpotlight.zPosition = -1
         playerNode.addChild(playerSpotlight)
 
-        playerspotlightArrow = createSpriteNode(imageName: "player-arrow", scale: 1, position: CGPoint(x: 0, y: -340))
+        playerspotlightArrow = createSpriteNode(imageName: "player-arrow", scale: 2.3, position: CGPoint(x: 0, y: -400))
         playerNode.addChild(playerspotlightArrow)
+
+        playerSpotlight2 = createSpriteNode(imageName: "Spotlight", scale: 5, position:CGPoint(x: 0, y: 600) )
+        playerSpotlight2.zPosition = -2
+        playerNode.addChild(playerSpotlight2)
 
         
         // UI Set Up
         uiPanel = SKShapeNode(rectOf: CGSize(width: size.width * 2, height: 350))
-        uiPanel.position = CGPoint(x: size.width / 2, y: 35)
+        uiPanel.position = CGPoint(x: size.width / 2, y: -630)
         uiPanel.zPosition = 50
         uiPanel.fillColor = UIColor(red: 0.13, green: 0.13, blue: 0.13, alpha: 1)
         uiPanel.strokeColor = UIColor.clear
         addChild(uiPanel)
         
-        backBtn = createSpriteNode(imageName: "Rewind", scale: 1.5, position: CGPoint(x: playerNode.position.x - 170, y: playerNode.position.y - 400))
+        backBtn = createSpriteNode(imageName: "Rewind", scale: 1.5, position: CGPoint(x: playerNode.position.x - 170, y: playerNode.position.y - 600))
         backBtn.zPosition = 55
         addChild(backBtn)
         
-        nextBtn = createSpriteNode(imageName: "Fastforward", scale: 1.5, position: CGPoint(x: playerNode.position.x + 170, y: playerNode.position.y - 400))
+        nextBtn = createSpriteNode(imageName: "Fastforward", scale: 1.5, position: CGPoint(x: playerNode.position.x + 170, y: playerNode.position.y - 600))
         nextBtn.zPosition = 55
         addChild(nextBtn)
 
@@ -244,7 +249,7 @@ class GameScene: SKScene {
         
         // Controller Set up
         // Thumbstick
-        thumbstickNode = createSpriteNode(imageName: "thumbpad", scale: 0.8, position: CGPoint(x: playerNode.position.x, y: playerNode.position.y - 400))
+        thumbstickNode = createSpriteNode(imageName: "thumbpad", scale: 0.8, position: CGPoint(x: playerNode.position.x, y: playerNode.position.y - 600))
         thumbstickNode.zPosition = 60
         //        thumbstickNode.fillColor = UIColor(red: 0.22, green: 0.22, blue: 0.22, alpha: 1)
         //        thumbstickNode.strokeColor = UIColor.clear
@@ -363,7 +368,7 @@ class GameScene: SKScene {
                 
                 if isPlayerRed {
                     let playerWalking = SKSpriteNode(imageNamed: "red-player")
-                    playerWalking.setScale(0.4)
+                    playerWalking.setScale(0.45)
                     playerWalking.position = playerNode.position
                     playerNode.removeFromParent()
                     playerNode = playerWalking
@@ -371,7 +376,7 @@ class GameScene: SKScene {
                     playerNode.run(SKAction.repeatForever(createAnimation(atlasName: "red-walk")))
                 } else {
                     let playerWalking = SKSpriteNode(imageNamed: "blue-player")
-                    playerWalking.setScale(0.4)
+                    playerWalking.setScale(0.45)
                     playerWalking.position = playerNode.position
                     playerNode.removeFromParent()
                     playerNode = playerWalking
@@ -381,9 +386,13 @@ class GameScene: SKScene {
 
                 playerspotlightArrow.removeFromParent()
 
-                playerSpotlight = createSpriteNode(imageName: "player-shadow", scale: 0.5, position: CGPoint(x: 0, y: -200))
+                playerSpotlight = createSpriteNode(imageName: "player-shadow", scale: 1.4, position: CGPoint(x: 0, y: -200))
                 playerSpotlight.zPosition = -1
                 playerNode.addChild(playerSpotlight)
+
+                playerSpotlight2 = createSpriteNode(imageName: "Spotlight", scale: 3, position:CGPoint(x: 0, y: 330) )
+                playerSpotlight2.zPosition = -2
+                playerNode.addChild(playerSpotlight2)
 
             }
             
@@ -443,7 +452,7 @@ class GameScene: SKScene {
         
         if isPlayerRed {
             let playerIdle = SKSpriteNode(imageNamed: "red-player")
-            playerIdle.setScale(0.2)
+            playerIdle.setScale(0.25)
             playerIdle.position = playerNode.position
             playerNode.removeFromParent()
             playerNode = playerIdle
@@ -451,7 +460,7 @@ class GameScene: SKScene {
             playerNode.run(SKAction.repeatForever(createAnimation(atlasName: "red-idle")))
         } else {
             let playerIdle = SKSpriteNode(imageNamed: "blue-player")
-            playerIdle.setScale(0.2)
+            playerIdle.setScale(0.25)
             playerIdle.position = playerNode.position
             playerNode.removeFromParent()
             playerNode = playerIdle
@@ -459,9 +468,13 @@ class GameScene: SKScene {
             playerNode.run(SKAction.repeatForever(createAnimation(atlasName: "blue-idle")))
         }
 
-        playerSpotlight = createSpriteNode(imageName: "player-shadow", scale: 1, position: CGPoint(x: 0, y: -290))
+        playerSpotlight = createSpriteNode(imageName: "player-shadow", scale: 2.5, position: CGPoint(x: 0, y: -290))
         playerSpotlight.zPosition = -1
         playerNode.addChild(playerSpotlight)
+
+        playerSpotlight2 = createSpriteNode(imageName: "Spotlight", scale: 5, position:CGPoint(x: 0, y: 600) )
+        playerSpotlight2.zPosition = -2
+        playerNode.addChild(playerSpotlight2)
 
     }
     
@@ -469,11 +482,11 @@ class GameScene: SKScene {
         playerNode.position.x += playerPosX * 3
         playerNode.position.y += playerPosY * 3
 
-        playerCam.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y)
+        playerCam.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y - 200)
         
         //        UI Relative to Camera
-        uiPanel.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y - 430)
-        thumbstickNode.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y - 400)
+        uiPanel.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y - 630)
+        thumbstickNode.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y - 600)
         nextBtn.position = CGPoint(x: playerNode.position.x + 170, y: thumbstickNode.position.y - 10)
         backBtn.position = CGPoint(x: playerNode.position.x - 170, y: thumbstickNode.position.y - 10)
 //        homeBtn.position = CGPoint(x: playerNode.position.x - 150, y: playerNode.position.y + 400)
