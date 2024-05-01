@@ -36,9 +36,9 @@ struct ContentView: View {
                 SpriteView(scene: scene)
                      .frame(width: sceneWidth, height: sceneHeight, alignment: .center)
                      .ignoresSafeArea()
-                NavigationLink(destination: StartMenu()) {
-                                    Image("home-btn")
-                                }
+//                NavigationLink(destination: StartMenu()) {
+//                                    Image("home-btn")
+//                                }
             }
             .padding()
             .navigationBarBackButtonHidden()

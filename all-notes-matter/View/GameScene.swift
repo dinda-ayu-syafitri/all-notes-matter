@@ -48,14 +48,10 @@ class GameScene: SKScene {
     
     // UI Node
     var uiPanel: SKShapeNode!
-    var progressBar: SKShapeNode!
-    var progressPlaceholder: SKShapeNode!
     var backBtn: SKSpriteNode!
     var nextBtn: SKSpriteNode!
 //    var homeBtn: SKSpriteNode!
 
-    var progress: CGFloat = 0
-    
     //    PlayerNode
     var playerNode: SKSpriteNode!
     var playerPosX: CGFloat = 0
@@ -227,7 +223,7 @@ class GameScene: SKScene {
 
         
         // UI Set Up
-        uiPanel = SKShapeNode(rectOf: CGSize(width: size.width * 2, height: 450))
+        uiPanel = SKShapeNode(rectOf: CGSize(width: size.width * 2, height: 350))
         uiPanel.position = CGPoint(x: size.width / 2, y: 35)
         uiPanel.zPosition = 50
         uiPanel.fillColor = UIColor(red: 0.13, green: 0.13, blue: 0.13, alpha: 1)
@@ -245,20 +241,6 @@ class GameScene: SKScene {
 //        homeBtn = createSpriteNode(imageName: "home-btn", scale: 1, position: CGPoint(x:50, y: 950))
 //        homeBtn.zPosition = 100
 //        addChild(homeBtn)
-
-        // Progress Bar
-        progressBar = SKShapeNode(rectOf: CGSize(width: size.width - 50, height: 8))
-        progressBar.fillColor = UIColor(red: 0.95, green: 0.57, blue: 0.02, alpha: 1)
-        progressBar.strokeColor = UIColor.clear
-        progressBar.zPosition = 100
-        addChild(progressBar)
-        
-        progressPlaceholder = SKShapeNode(rectOf: CGSize(width: size.width + 50, height: 8))
-        progressPlaceholder.fillColor = UIColor(.gray)
-        progressPlaceholder.strokeColor = UIColor.clear
-        progressPlaceholder.position = CGPoint(x: size.width/2 , y: 255)
-        progressPlaceholder.zPosition = 99
-        addChild(progressPlaceholder)
         
         // Controller Set up
         // Thumbstick
@@ -369,15 +351,6 @@ class GameScene: SKScene {
         guitarAudio = createAudio(audioName: "guitar", audioExtension: "m4a", forNode: guitarGroup)
         SaxTrumpetAudio = createAudio(audioName: "vocals", audioExtension: "m4a", forNode: saxTrumpetGroup)
         pianoHarmonicaAudio = createAudio(audioName: "other", audioExtension: "m4a", forNode: pianoHarmonicaGroup)
-        
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-            let increment = (0.1 / TimeInterval(7030.3731)) * 100.0
-            self.progress += CGFloat(increment)
-            
-            if self.progress >= 100 {
-                timer.invalidate()
-            }
-        }
         
         
     }
@@ -501,8 +474,6 @@ class GameScene: SKScene {
         //        UI Relative to Camera
         uiPanel.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y - 400)
         thumbstickNode.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y-400)
-        progressBar.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y - 250)
-        progressPlaceholder.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y - 245)
         nextBtn.position = CGPoint(x: playerNode.position.x + 180, y: playerNode.position.y - 400)
         backBtn.position = CGPoint(x: playerNode.position.x - 180, y: playerNode.position.y - 400)
 //        homeBtn.position = CGPoint(x: playerNode.position.x - 150, y: playerNode.position.y + 400)
@@ -513,27 +484,6 @@ class GameScene: SKScene {
         } else if playerPosX < 0 {
             playerNode.xScale = -abs(playerNode.xScale)
         }
-        
-        //        let progressBarWidth = min(progress * (size.width - 220 / 100), size.width + 50)
-        //        progressBar.path = UIBezierPath(rect: CGRect(x: -220, y: 0, width: progressBarWidth, height: 8)).cgPath
-        
-        let progressBarWidth = min(progress * (size.width - 210 / 100), size.width + 35)
-        
-        let progressBarPath = UIBezierPath(rect: CGRect(x: -220, y: 0, width: progressBarWidth, height: 8))
-        
-        let circleX = progressBarWidth - 220 + 8
-        let circleY = 4
-        let circleRadius = 8
-        
-        let circleRect = CGRect(x: Int(circleX) - circleRadius, y: circleY - circleRadius, width: circleRadius * 2, height: circleRadius * 2)
-        
-        let circlePath = UIBezierPath(ovalIn: circleRect)
-        
-        progressBarPath.append(circlePath)
-        
-        progressBar.path = progressBarPath.cgPath
-        
-        //        print(progress)
         
         
         allAudioNodes = self.getAllAudioNodes()
