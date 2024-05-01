@@ -19,10 +19,7 @@ struct ContentView: View {
     var scene: SKScene {
         let scene = GameScene()
         scene.isPlayerRed = isPlayerRed
-//        scene.updatePlayerRedState = { isPlayerRed in
-//            self.isPlayerRed = isPlayerRed
-//
-//        }
+
         scene.size = CGSize(width: sceneWidth, height: sceneHeight)
         scene.scaleMode = .fill
         scene.backgroundColor = UIColor(red: 0.12, green: 0.12, blue: 0.12, alpha: 1)

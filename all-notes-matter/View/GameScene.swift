@@ -230,11 +230,11 @@ class GameScene: SKScene {
         uiPanel.strokeColor = UIColor.clear
         addChild(uiPanel)
         
-        backBtn = createSpriteNode(imageName: "back5", scale: 1, position: CGPoint(x: playerNode.position.x - 180, y: playerNode.position.y - 400))
+        backBtn = createSpriteNode(imageName: "Rewind", scale: 1.5, position: CGPoint(x: playerNode.position.x - 170, y: playerNode.position.y - 400))
         backBtn.zPosition = 55
         addChild(backBtn)
         
-        nextBtn = createSpriteNode(imageName: "next5", scale: 1, position: CGPoint(x: playerNode.position.x + 180, y: playerNode.position.y - 400))
+        nextBtn = createSpriteNode(imageName: "Fastforward", scale: 1.5, position: CGPoint(x: playerNode.position.x + 170, y: playerNode.position.y - 400))
         nextBtn.zPosition = 55
         addChild(nextBtn)
 
@@ -466,16 +466,16 @@ class GameScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        playerNode.position.x += playerPosX * 2
-        playerNode.position.y += playerPosY * 2
+        playerNode.position.x += playerPosX * 3
+        playerNode.position.y += playerPosY * 3
 
         playerCam.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y)
         
         //        UI Relative to Camera
-        uiPanel.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y - 400)
-        thumbstickNode.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y-400)
-        nextBtn.position = CGPoint(x: playerNode.position.x + 180, y: playerNode.position.y - 400)
-        backBtn.position = CGPoint(x: playerNode.position.x - 180, y: playerNode.position.y - 400)
+        uiPanel.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y - 430)
+        thumbstickNode.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y - 400)
+        nextBtn.position = CGPoint(x: playerNode.position.x + 170, y: thumbstickNode.position.y - 10)
+        backBtn.position = CGPoint(x: playerNode.position.x - 170, y: thumbstickNode.position.y - 10)
 //        homeBtn.position = CGPoint(x: playerNode.position.x - 150, y: playerNode.position.y + 400)
 
         
