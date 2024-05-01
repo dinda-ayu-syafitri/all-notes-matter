@@ -103,6 +103,8 @@ class GameScene: SKScene {
     var initialTimeFrame: TimeInterval = 0.2
 
 
+
+
     func createSpriteNode(imageName:String, scale:CGFloat, position:CGPoint ) -> SKSpriteNode {
         let node = SKSpriteNode(imageNamed: imageName)
         node.setScale(scale)
@@ -128,20 +130,20 @@ class GameScene: SKScene {
         return animations
     }
 
-//    func changeAnimationSpeed(forNode node: SKNode, playerPosition: CGPoint, atlasName: String) {
-//        let distance = node.position.distance(to: playerPosition)
-//
-//        let maxDistance: CGFloat = 1000.0
-//
-//
-//        let newTimePerFrame = (distance / maxDistance) * initialTimeFrame
-//        print(newTimePerFrame)
-//
-//        let action = createAnimation(atlasName: atlasName, timePerFrame: newTimePerFrame)
-//
-//        node.removeAllActions()
-//        node.run(SKAction.repeatForever(action))
-//    }
+    //    func changeAnimationSpeed(forNode node: SKNode, playerPosition: CGPoint, atlasName: String) {
+    //        let distance = node.position.distance(to: playerPosition)
+    //
+    //        let maxDistance: CGFloat = 1000.0
+    //
+    //
+    //        let newTimePerFrame = (distance / maxDistance) * initialTimeFrame
+    //        print(newTimePerFrame)
+    //
+    //        let action = createAnimation(atlasName: atlasName, timePerFrame: newTimePerFrame)
+    //
+    //        node.removeAllActions()
+    //        node.run(SKAction.repeatForever(action))
+    //    }
 
     func createAudio(audioName: String, audioExtension: String, forNode: SKSpriteNode) -> SKAudioNode? {
         if let audioURL = Bundle.main.url(forResource: audioName, withExtension: audioExtension) {
@@ -251,11 +253,30 @@ class GameScene: SKScene {
 
 
     override func didMove(to view: SKView) {
+        physicsWorld.gravity = CGVector.zero
+
+//        let centerX = size.width / 2
+//         let centerY = size.height / 2
+//         let radius: CGFloat = 850
+
+//         let playableArea = SKShapeNode(circleOfRadius: radius)
+        let playableArea = CGRect(x: -size.width/2 - 500, y: -250, width: size.width * 4.5, height: size.height + 400)
+
+        let playArea = SKShapeNode(rect: playableArea)
+        playArea.strokeColor = UIColor(red: 0.95, green: 0.57, blue: 0.02, alpha: 1)
+        playArea.lineWidth = 20
+        playArea.lineCap = .round
+        playArea.lineJoin = .round
+        addChild(playArea)
+
+        self.physicsBody = SKPhysicsBody(edgeLoopFrom: playableArea)
+
 
         bgNode = createSpriteNode(imageName: "bg-big", scale: 1, position: CGPoint(x:size.width / 2, y: size.height / 2))
 
         playerCam.setScale(1.3)
         camera = playerCam
+        
 
         // Player Set Up
         if isPlayerRed {
@@ -266,17 +287,22 @@ class GameScene: SKScene {
             playerNode.run(SKAction.repeatForever(createAnimation(atlasName: "blue-idle")))
         }
 
+        playerNode.physicsBody = SKPhysicsBody(rectangleOf: playerNode.size)
+        playerNode.physicsBody?.isDynamic = true
         addChild(playerNode)
 
         playerSpotlight = createSpriteNode(imageName: "player-shadow", scale: 2.5, position: CGPoint(x: 0, y: -290))
         playerSpotlight.zPosition = -1
+        playerSpotlight.physicsBody = nil
         playerNode.addChild(playerSpotlight)
 
         playerspotlightArrow = createSpriteNode(imageName: "player-arrow", scale: 2.3, position: CGPoint(x: 0, y: -400))
+        playerSpotlight.physicsBody = nil
         playerNode.addChild(playerspotlightArrow)
 
         playerSpotlight2 = createSpriteNode(imageName: "Spotlight", scale: 5, position:CGPoint(x: 0, y: 600) )
         playerSpotlight2.zPosition = -2
+        playerSpotlight.physicsBody = nil 
         playerNode.addChild(playerSpotlight2)
 
 
@@ -425,6 +451,8 @@ class GameScene: SKScene {
                     playerWalking.position = playerNode.position
                     playerNode.removeFromParent()
                     playerNode = playerWalking
+                    playerNode.physicsBody = SKPhysicsBody(rectangleOf: playerNode.size)
+                    playerNode.physicsBody?.isDynamic = true
                     addChild(playerNode)
                     playerNode.run(SKAction.repeatForever(createAnimation(atlasName: "red-walk")))
                 } else {
@@ -433,6 +461,8 @@ class GameScene: SKScene {
                     playerWalking.position = playerNode.position
                     playerNode.removeFromParent()
                     playerNode = playerWalking
+                    playerNode.physicsBody = SKPhysicsBody(rectangleOf: playerNode.size)
+                    playerNode.physicsBody?.isDynamic = true
                     addChild(playerNode)
                     playerNode.run(SKAction.repeatForever(createAnimation(atlasName: "blue-walk")))
                 }
@@ -500,6 +530,8 @@ class GameScene: SKScene {
             playerIdle.position = playerNode.position
             playerNode.removeFromParent()
             playerNode = playerIdle
+            playerNode.physicsBody = SKPhysicsBody(rectangleOf: playerNode.size)
+            playerNode.physicsBody?.isDynamic = true
             addChild(playerNode)
             playerNode.run(SKAction.repeatForever(createAnimation(atlasName: "red-idle")))
         } else {
@@ -508,6 +540,8 @@ class GameScene: SKScene {
             playerIdle.position = playerNode.position
             playerNode.removeFromParent()
             playerNode = playerIdle
+            playerNode.physicsBody = SKPhysicsBody(rectangleOf: playerNode.size)
+            playerNode.physicsBody?.isDynamic = true
             addChild(playerNode)
             playerNode.run(SKAction.repeatForever(createAnimation(atlasName: "blue-idle")))
         }
@@ -548,14 +582,14 @@ class GameScene: SKScene {
         // Volume Control
         volumeController(allAudioNodes: allAudioNodes)
 
-//        print(playerNode.position.distance(to: bongoNode.position))
-//
-//        if playerNode.position.distance(to: bongoNode.position) == 500 {
-//            bongoNode.removeAllActions()
-//            initialTimeFrame = 0.05
-//            bongoNode.run(SKAction.repeatForever(createAnimation(atlasName:"drum-textures")))
-//            print("should be changed")
-//        }
+        //        print(playerNode.position.distance(to: bongoNode.position))
+        //
+        //        if playerNode.position.distance(to: bongoNode.position) == 500 {
+        //            bongoNode.removeAllActions()
+        //            initialTimeFrame = 0.05
+        //            bongoNode.run(SKAction.repeatForever(createAnimation(atlasName:"drum-textures")))
+        //            print("should be changed")
+        //        }
 
         if isPaused {
             for audioNode in allAudioNodes {
