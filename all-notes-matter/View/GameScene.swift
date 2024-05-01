@@ -100,6 +100,8 @@ class GameScene: SKScene {
 
     var songPart = 0
 
+    var initialTimeFrame: TimeInterval = 0.2
+
 
     func createSpriteNode(imageName:String, scale:CGFloat, position:CGPoint ) -> SKSpriteNode {
         let node = SKSpriteNode(imageNamed: imageName)
@@ -110,7 +112,7 @@ class GameScene: SKScene {
         return node
     }
 
-    func createAnimation(atlasName: String) -> SKAction {
+    func createAnimation(atlasName: String, timePerFrame: TimeInterval = 0.2) -> SKAction {
 
         let textureAtlas = SKTextureAtlas(named: atlasName)
 
@@ -121,10 +123,25 @@ class GameScene: SKScene {
             textures.append(textureAtlas.textureNamed(i))
         }
 
-        let animations = SKAction.animate(with: textures, timePerFrame: 0.2)
+        let animations = SKAction.animate(with: textures, timePerFrame: timePerFrame)
 
         return animations
     }
+
+//    func changeAnimationSpeed(forNode node: SKNode, playerPosition: CGPoint, atlasName: String) {
+//        let distance = node.position.distance(to: playerPosition)
+//
+//        let maxDistance: CGFloat = 1000.0
+//
+//
+//        let newTimePerFrame = (distance / maxDistance) * initialTimeFrame
+//        print(newTimePerFrame)
+//
+//        let action = createAnimation(atlasName: atlasName, timePerFrame: newTimePerFrame)
+//
+//        node.removeAllActions()
+//        node.run(SKAction.repeatForever(action))
+//    }
 
     func createAudio(audioName: String, audioExtension: String, forNode: SKSpriteNode) -> SKAudioNode? {
         if let audioURL = Bundle.main.url(forResource: audioName, withExtension: audioExtension) {
@@ -177,7 +194,7 @@ class GameScene: SKScene {
                 songPart += 1
 
                 for audio in songParts[songPart] {
-                  _ = createAudio(audioName: audio[0] as! String, audioExtension: "mp3", forNode: audio[1] as! SKSpriteNode)
+                    _ = createAudio(audioName: audio[0] as! String, audioExtension: "mp3", forNode: audio[1] as! SKSpriteNode)
                 }
             }
 
@@ -192,7 +209,7 @@ class GameScene: SKScene {
                 songPart -= 1
 
                 for audio in songParts[songPart] {
-                  _ = createAudio(audioName: audio[0] as! String, audioExtension: "mp3", forNode: audio[1] as! SKSpriteNode)
+                    _ = createAudio(audioName: audio[0] as! String, audioExtension: "mp3", forNode: audio[1] as! SKSpriteNode)
                 }
             }
 
@@ -439,12 +456,7 @@ class GameScene: SKScene {
             if nextBtn.contains(touch.location(in: self)) {
                 skipPart(type: "next")
             }
-
         }
-
-
-
-
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -535,6 +547,15 @@ class GameScene: SKScene {
 
         // Volume Control
         volumeController(allAudioNodes: allAudioNodes)
+
+//        print(playerNode.position.distance(to: bongoNode.position))
+//
+//        if playerNode.position.distance(to: bongoNode.position) == 500 {
+//            bongoNode.removeAllActions()
+//            initialTimeFrame = 0.05
+//            bongoNode.run(SKAction.repeatForever(createAnimation(atlasName:"drum-textures")))
+//            print("should be changed")
+//        }
 
         if isPaused {
             for audioNode in allAudioNodes {

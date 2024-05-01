@@ -35,6 +35,7 @@ struct CharacterMenu: View {
                     .edgesIgnoringSafeArea(.all)
                     .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
 
+
                 VStack (spacing: 0) {
                     Image("spot")
                         .ignoresSafeArea()
@@ -65,11 +66,27 @@ struct CharacterMenu: View {
                     NavigationLink(destination: ContentView(isPlayerRed: $isPlayerRed)) {
                         Image("play")
                     }
+                    
 
                     Spacer()
 
                 }
                 .padding(.bottom, 150)
+
+                VStack {
+                    HStack (alignment: .top) {
+                        NavigationLink(destination: StartMenu(), label: {
+                            Image("home-new")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 80)
+                        })
+                        Spacer()
+
+                    }
+                    .padding(.leading, 20)
+                }
+                .padding(.bottom, 650)
             }
             .background{
                 Color.black
