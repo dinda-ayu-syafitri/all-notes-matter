@@ -62,10 +62,12 @@ struct StartMenu: View {
                                     )
                                     .cornerRadius(17)
                                     .overlay(
-                                        Color.black.opacity(0.7)
+                                        LinearGradient(gradient: Gradient(colors: [Color(red: 0, green: 0, blue: 0).opacity(0), .black]), startPoint: .top, endPoint: .bottom)
                                     )
                                     .overlay(
-                                        Image("lock")
+                                        NavigationLink(destination: CharacterMenuToDean()) {
+                                            Image("play")
+                                        }
                                     )
                             }
                             HStack(alignment: .top, spacing: 23) {

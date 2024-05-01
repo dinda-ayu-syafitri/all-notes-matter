@@ -7,6 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		205AB5742BE2B9FC00F0DC12 /* DeanTownScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205AB5732BE2B9FC00F0DC12 /* DeanTownScene.swift */; };
+		205AB5762BE2BB0D00F0DC12 /* CharacterMenuToDean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205AB5752BE2BB0D00F0DC12 /* CharacterMenuToDean.swift */; };
+		205AB5782BE2BB4F00F0DC12 /* DeanTownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205AB5772BE2BB4F00F0DC12 /* DeanTownView.swift */; };
+		205AB59E2BE2BE4300F0DC12 /* dt-bass-chorus1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB57A2BE2BE4200F0DC12 /* dt-bass-chorus1.mp3 */; };
+		205AB59F2BE2BE4300F0DC12 /* dt-drums-chorus1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB57B2BE2BE4200F0DC12 /* dt-drums-chorus1.mp3 */; };
+		205AB5A02BE2BE4300F0DC12 /* dt-full-chorus1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB57C2BE2BE4200F0DC12 /* dt-full-chorus1.mp3 */; };
+		205AB5A12BE2BE4300F0DC12 /* dt-guitar-chorus1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB57D2BE2BE4200F0DC12 /* dt-guitar-chorus1.mp3 */; };
+		205AB5A22BE2BE4300F0DC12 /* dt-keys-chorus1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB57E2BE2BE4200F0DC12 /* dt-keys-chorus1.mp3 */; };
+		205AB5A32BE2BE4300F0DC12 /* dt-bass-chorus2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB5802BE2BE4200F0DC12 /* dt-bass-chorus2.mp3 */; };
+		205AB5A42BE2BE4300F0DC12 /* dt-drums-chorus2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB5812BE2BE4200F0DC12 /* dt-drums-chorus2.mp3 */; };
+		205AB5A52BE2BE4300F0DC12 /* dt-full-chorus2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB5822BE2BE4200F0DC12 /* dt-full-chorus2.mp3 */; };
+		205AB5A62BE2BE4300F0DC12 /* dt-guitar-chorus2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB5832BE2BE4200F0DC12 /* dt-guitar-chorus2.mp3 */; };
+		205AB5A72BE2BE4300F0DC12 /* dt-keys-chorus2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB5842BE2BE4200F0DC12 /* dt-keys-chorus2.mp3 */; };
+		205AB5A82BE2BE4300F0DC12 /* dt-bass-bridge.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB5862BE2BE4200F0DC12 /* dt-bass-bridge.mp3 */; };
+		205AB5A92BE2BE4300F0DC12 /* dt-drums-bridge.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB5872BE2BE4200F0DC12 /* dt-drums-bridge.mp3 */; };
+		205AB5AA2BE2BE4300F0DC12 /* dt-full-bridge.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB5882BE2BE4200F0DC12 /* dt-full-bridge.mp3 */; };
+		205AB5AB2BE2BE4300F0DC12 /* dt-guitar-bridge.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB5892BE2BE4200F0DC12 /* dt-guitar-bridge.mp3 */; };
+		205AB5AC2BE2BE4300F0DC12 /* dt-keys-bridge.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB58A2BE2BE4200F0DC12 /* dt-keys-bridge.mp3 */; };
+		205AB5AD2BE2BE4300F0DC12 /* dt-bass-intro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB58C2BE2BE4300F0DC12 /* dt-bass-intro.mp3 */; };
+		205AB5AE2BE2BE4300F0DC12 /* dt-drums-intro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB58D2BE2BE4300F0DC12 /* dt-drums-intro.mp3 */; };
+		205AB5AF2BE2BE4300F0DC12 /* dt-full-intro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB58E2BE2BE4300F0DC12 /* dt-full-intro.mp3 */; };
+		205AB5B02BE2BE4300F0DC12 /* dt-guitar-intro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB58F2BE2BE4300F0DC12 /* dt-guitar-intro.mp3 */; };
+		205AB5B12BE2BE4300F0DC12 /* dt-keys-intro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB5902BE2BE4300F0DC12 /* dt-keys-intro.mp3 */; };
+		205AB5B22BE2BE4300F0DC12 /* dt-bass-verse1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB5922BE2BE4300F0DC12 /* dt-bass-verse1.mp3 */; };
+		205AB5B32BE2BE4300F0DC12 /* dt-drums-verse1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB5932BE2BE4300F0DC12 /* dt-drums-verse1.mp3 */; };
+		205AB5B42BE2BE4300F0DC12 /* dt-full-verse1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB5942BE2BE4300F0DC12 /* dt-full-verse1.mp3 */; };
+		205AB5B52BE2BE4300F0DC12 /* dt-guitar-verse1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB5952BE2BE4300F0DC12 /* dt-guitar-verse1.mp3 */; };
+		205AB5B62BE2BE4300F0DC12 /* dt-keys-verse1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB5962BE2BE4300F0DC12 /* dt-keys-verse1.mp3 */; };
+		205AB5B72BE2BE4300F0DC12 /* dt-bass-chorus3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB5982BE2BE4300F0DC12 /* dt-bass-chorus3.mp3 */; };
+		205AB5B82BE2BE4300F0DC12 /* dt-drums-chorus3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB5992BE2BE4300F0DC12 /* dt-drums-chorus3.mp3 */; };
+		205AB5B92BE2BE4300F0DC12 /* dt-full-chorus3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB59A2BE2BE4300F0DC12 /* dt-full-chorus3.mp3 */; };
+		205AB5BA2BE2BE4300F0DC12 /* dt-guitar-chorus3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB59B2BE2BE4300F0DC12 /* dt-guitar-chorus3.mp3 */; };
+		205AB5BB2BE2BE4300F0DC12 /* dt-keys-chorus3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 205AB59C2BE2BE4300F0DC12 /* dt-keys-chorus3.mp3 */; };
 		2089E4CD2BE0151D0046340D /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2089E4CC2BE0151D0046340D /* SplashScreen.swift */; };
 		2089E4CF2BE01CE00046340D /* bass2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 2089E4CE2BE01CE00046340D /* bass2.m4a */; };
 		2089E4D12BE01F5F0046340D /* CharacterCustomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2089E4D02BE01F5F0046340D /* CharacterCustomScene.swift */; };
@@ -44,6 +77,39 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		205AB5732BE2B9FC00F0DC12 /* DeanTownScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeanTownScene.swift; sourceTree = "<group>"; };
+		205AB5752BE2BB0D00F0DC12 /* CharacterMenuToDean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMenuToDean.swift; sourceTree = "<group>"; };
+		205AB5772BE2BB4F00F0DC12 /* DeanTownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeanTownView.swift; sourceTree = "<group>"; };
+		205AB57A2BE2BE4200F0DC12 /* dt-bass-chorus1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-bass-chorus1.mp3"; sourceTree = "<group>"; };
+		205AB57B2BE2BE4200F0DC12 /* dt-drums-chorus1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-drums-chorus1.mp3"; sourceTree = "<group>"; };
+		205AB57C2BE2BE4200F0DC12 /* dt-full-chorus1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-full-chorus1.mp3"; sourceTree = "<group>"; };
+		205AB57D2BE2BE4200F0DC12 /* dt-guitar-chorus1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-guitar-chorus1.mp3"; sourceTree = "<group>"; };
+		205AB57E2BE2BE4200F0DC12 /* dt-keys-chorus1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-keys-chorus1.mp3"; sourceTree = "<group>"; };
+		205AB5802BE2BE4200F0DC12 /* dt-bass-chorus2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-bass-chorus2.mp3"; sourceTree = "<group>"; };
+		205AB5812BE2BE4200F0DC12 /* dt-drums-chorus2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-drums-chorus2.mp3"; sourceTree = "<group>"; };
+		205AB5822BE2BE4200F0DC12 /* dt-full-chorus2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-full-chorus2.mp3"; sourceTree = "<group>"; };
+		205AB5832BE2BE4200F0DC12 /* dt-guitar-chorus2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-guitar-chorus2.mp3"; sourceTree = "<group>"; };
+		205AB5842BE2BE4200F0DC12 /* dt-keys-chorus2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-keys-chorus2.mp3"; sourceTree = "<group>"; };
+		205AB5862BE2BE4200F0DC12 /* dt-bass-bridge.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-bass-bridge.mp3"; sourceTree = "<group>"; };
+		205AB5872BE2BE4200F0DC12 /* dt-drums-bridge.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-drums-bridge.mp3"; sourceTree = "<group>"; };
+		205AB5882BE2BE4200F0DC12 /* dt-full-bridge.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-full-bridge.mp3"; sourceTree = "<group>"; };
+		205AB5892BE2BE4200F0DC12 /* dt-guitar-bridge.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-guitar-bridge.mp3"; sourceTree = "<group>"; };
+		205AB58A2BE2BE4200F0DC12 /* dt-keys-bridge.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-keys-bridge.mp3"; sourceTree = "<group>"; };
+		205AB58C2BE2BE4300F0DC12 /* dt-bass-intro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-bass-intro.mp3"; sourceTree = "<group>"; };
+		205AB58D2BE2BE4300F0DC12 /* dt-drums-intro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-drums-intro.mp3"; sourceTree = "<group>"; };
+		205AB58E2BE2BE4300F0DC12 /* dt-full-intro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-full-intro.mp3"; sourceTree = "<group>"; };
+		205AB58F2BE2BE4300F0DC12 /* dt-guitar-intro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-guitar-intro.mp3"; sourceTree = "<group>"; };
+		205AB5902BE2BE4300F0DC12 /* dt-keys-intro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-keys-intro.mp3"; sourceTree = "<group>"; };
+		205AB5922BE2BE4300F0DC12 /* dt-bass-verse1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-bass-verse1.mp3"; sourceTree = "<group>"; };
+		205AB5932BE2BE4300F0DC12 /* dt-drums-verse1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-drums-verse1.mp3"; sourceTree = "<group>"; };
+		205AB5942BE2BE4300F0DC12 /* dt-full-verse1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-full-verse1.mp3"; sourceTree = "<group>"; };
+		205AB5952BE2BE4300F0DC12 /* dt-guitar-verse1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-guitar-verse1.mp3"; sourceTree = "<group>"; };
+		205AB5962BE2BE4300F0DC12 /* dt-keys-verse1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-keys-verse1.mp3"; sourceTree = "<group>"; };
+		205AB5982BE2BE4300F0DC12 /* dt-bass-chorus3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-bass-chorus3.mp3"; sourceTree = "<group>"; };
+		205AB5992BE2BE4300F0DC12 /* dt-drums-chorus3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-drums-chorus3.mp3"; sourceTree = "<group>"; };
+		205AB59A2BE2BE4300F0DC12 /* dt-full-chorus3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-full-chorus3.mp3"; sourceTree = "<group>"; };
+		205AB59B2BE2BE4300F0DC12 /* dt-guitar-chorus3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-guitar-chorus3.mp3"; sourceTree = "<group>"; };
+		205AB59C2BE2BE4300F0DC12 /* dt-keys-chorus3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dt-keys-chorus3.mp3"; sourceTree = "<group>"; };
 		2089E4CC2BE0151D0046340D /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		2089E4CE2BE01CE00046340D /* bass2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = bass2.m4a; sourceTree = "<group>"; };
 		2089E4D02BE01F5F0046340D /* CharacterCustomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCustomScene.swift; sourceTree = "<group>"; };
@@ -92,6 +158,91 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		205AB5792BE2BE3200F0DC12 /* Dean Town Audio */ = {
+			isa = PBXGroup;
+			children = (
+				205AB58B2BE2BE4200F0DC12 /* bridge */,
+				205AB57F2BE2BE4200F0DC12 /* chorus1 */,
+				205AB5852BE2BE4200F0DC12 /* chorus2 */,
+				205AB59D2BE2BE4300F0DC12 /* chorus3 */,
+				205AB5912BE2BE4300F0DC12 /* intro */,
+				205AB5972BE2BE4300F0DC12 /* verse1 */,
+			);
+			path = "Dean Town Audio";
+			sourceTree = "<group>";
+		};
+		205AB57F2BE2BE4200F0DC12 /* chorus1 */ = {
+			isa = PBXGroup;
+			children = (
+				205AB57A2BE2BE4200F0DC12 /* dt-bass-chorus1.mp3 */,
+				205AB57B2BE2BE4200F0DC12 /* dt-drums-chorus1.mp3 */,
+				205AB57C2BE2BE4200F0DC12 /* dt-full-chorus1.mp3 */,
+				205AB57D2BE2BE4200F0DC12 /* dt-guitar-chorus1.mp3 */,
+				205AB57E2BE2BE4200F0DC12 /* dt-keys-chorus1.mp3 */,
+			);
+			path = chorus1;
+			sourceTree = "<group>";
+		};
+		205AB5852BE2BE4200F0DC12 /* chorus2 */ = {
+			isa = PBXGroup;
+			children = (
+				205AB5802BE2BE4200F0DC12 /* dt-bass-chorus2.mp3 */,
+				205AB5812BE2BE4200F0DC12 /* dt-drums-chorus2.mp3 */,
+				205AB5822BE2BE4200F0DC12 /* dt-full-chorus2.mp3 */,
+				205AB5832BE2BE4200F0DC12 /* dt-guitar-chorus2.mp3 */,
+				205AB5842BE2BE4200F0DC12 /* dt-keys-chorus2.mp3 */,
+			);
+			path = chorus2;
+			sourceTree = "<group>";
+		};
+		205AB58B2BE2BE4200F0DC12 /* bridge */ = {
+			isa = PBXGroup;
+			children = (
+				205AB5862BE2BE4200F0DC12 /* dt-bass-bridge.mp3 */,
+				205AB5872BE2BE4200F0DC12 /* dt-drums-bridge.mp3 */,
+				205AB5882BE2BE4200F0DC12 /* dt-full-bridge.mp3 */,
+				205AB5892BE2BE4200F0DC12 /* dt-guitar-bridge.mp3 */,
+				205AB58A2BE2BE4200F0DC12 /* dt-keys-bridge.mp3 */,
+			);
+			path = bridge;
+			sourceTree = "<group>";
+		};
+		205AB5912BE2BE4300F0DC12 /* intro */ = {
+			isa = PBXGroup;
+			children = (
+				205AB58C2BE2BE4300F0DC12 /* dt-bass-intro.mp3 */,
+				205AB58D2BE2BE4300F0DC12 /* dt-drums-intro.mp3 */,
+				205AB58E2BE2BE4300F0DC12 /* dt-full-intro.mp3 */,
+				205AB58F2BE2BE4300F0DC12 /* dt-guitar-intro.mp3 */,
+				205AB5902BE2BE4300F0DC12 /* dt-keys-intro.mp3 */,
+			);
+			path = intro;
+			sourceTree = "<group>";
+		};
+		205AB5972BE2BE4300F0DC12 /* verse1 */ = {
+			isa = PBXGroup;
+			children = (
+				205AB5922BE2BE4300F0DC12 /* dt-bass-verse1.mp3 */,
+				205AB5932BE2BE4300F0DC12 /* dt-drums-verse1.mp3 */,
+				205AB5942BE2BE4300F0DC12 /* dt-full-verse1.mp3 */,
+				205AB5952BE2BE4300F0DC12 /* dt-guitar-verse1.mp3 */,
+				205AB5962BE2BE4300F0DC12 /* dt-keys-verse1.mp3 */,
+			);
+			path = verse1;
+			sourceTree = "<group>";
+		};
+		205AB59D2BE2BE4300F0DC12 /* chorus3 */ = {
+			isa = PBXGroup;
+			children = (
+				205AB5982BE2BE4300F0DC12 /* dt-bass-chorus3.mp3 */,
+				205AB5992BE2BE4300F0DC12 /* dt-drums-chorus3.mp3 */,
+				205AB59A2BE2BE4300F0DC12 /* dt-full-chorus3.mp3 */,
+				205AB59B2BE2BE4300F0DC12 /* dt-guitar-chorus3.mp3 */,
+				205AB59C2BE2BE4300F0DC12 /* dt-keys-chorus3.mp3 */,
+			);
+			path = chorus3;
+			sourceTree = "<group>";
+		};
 		20CC5ED22BE2413500EA681F /* Spain Audio */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +337,9 @@
 				2089E4CC2BE0151D0046340D /* SplashScreen.swift */,
 				20D8D9922BDA4E8E003148F8 /* ContentView.swift */,
 				2089E4D02BE01F5F0046340D /* CharacterCustomScene.swift */,
+				205AB5732BE2B9FC00F0DC12 /* DeanTownScene.swift */,
+				205AB5752BE2BB0D00F0DC12 /* CharacterMenuToDean.swift */,
+				205AB5772BE2BB4F00F0DC12 /* DeanTownView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -193,6 +347,7 @@
 		20E43D7C2BDCEA8900715972 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				205AB5792BE2BE3200F0DC12 /* Dean Town Audio */,
 				20CC5ED22BE2413500EA681F /* Spain Audio */,
 				20E43D7D2BDCEA9E00715972 /* AudioSrc */,
 			);
@@ -271,29 +426,59 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				205AB5A82BE2BE4300F0DC12 /* dt-bass-bridge.mp3 in Resources */,
+				205AB5B72BE2BE4300F0DC12 /* dt-bass-chorus3.mp3 in Resources */,
+				205AB5B22BE2BE4300F0DC12 /* dt-bass-verse1.mp3 in Resources */,
 				2089E4CF2BE01CE00046340D /* bass2.m4a in Resources */,
+				205AB5A42BE2BE4300F0DC12 /* dt-drums-chorus2.mp3 in Resources */,
+				205AB5AC2BE2BE4300F0DC12 /* dt-keys-bridge.mp3 in Resources */,
+				205AB5B82BE2BE4300F0DC12 /* dt-drums-chorus3.mp3 in Resources */,
+				205AB59E2BE2BE4300F0DC12 /* dt-bass-chorus1.mp3 in Resources */,
+				205AB5B02BE2BE4300F0DC12 /* dt-guitar-intro.mp3 in Resources */,
+				205AB5A32BE2BE4300F0DC12 /* dt-bass-chorus2.mp3 in Resources */,
 				20CC5EEF2BE2496A00EA681F /* theme1-full.mp3 in Resources */,
 				20CC5EE62BE2496A00EA681F /* solos-drums.mp3 in Resources */,
+				205AB5A22BE2BE4300F0DC12 /* dt-keys-chorus1.mp3 in Resources */,
 				20CC5EF42BE2496A00EA681F /* theme1-bass.mp3 in Resources */,
+				205AB5B62BE2BE4300F0DC12 /* dt-keys-verse1.mp3 in Resources */,
+				205AB5B12BE2BE4300F0DC12 /* dt-keys-intro.mp3 in Resources */,
+				205AB5BA2BE2BE4300F0DC12 /* dt-guitar-chorus3.mp3 in Resources */,
+				205AB5A72BE2BE4300F0DC12 /* dt-keys-chorus2.mp3 in Resources */,
+				205AB5BB2BE2BE4300F0DC12 /* dt-keys-chorus3.mp3 in Resources */,
+				205AB5B52BE2BE4300F0DC12 /* dt-guitar-verse1.mp3 in Resources */,
+				205AB5A02BE2BE4300F0DC12 /* dt-full-chorus1.mp3 in Resources */,
+				205AB5A52BE2BE4300F0DC12 /* dt-full-chorus2.mp3 in Resources */,
 				20D8D9982BDA4E90003148F8 /* Preview Assets.xcassets in Resources */,
 				20E43D842BDCEAD400715972 /* bass.m4a in Resources */,
 				20CC5EF22BE2496A00EA681F /* theme2-other.mp3 in Resources */,
+				205AB5B92BE2BE4300F0DC12 /* dt-full-chorus3.mp3 in Resources */,
+				205AB59F2BE2BE4300F0DC12 /* dt-drums-chorus1.mp3 in Resources */,
 				20CC5EED2BE2496A00EA681F /* solos-other.mp3 in Resources */,
+				205AB5AD2BE2BE4300F0DC12 /* dt-bass-intro.mp3 in Resources */,
 				20E43D852BDCEAD400715972 /* vocals.m4a in Resources */,
+				205AB5B32BE2BE4300F0DC12 /* dt-drums-verse1.mp3 in Resources */,
 				20CC5EE92BE2496A00EA681F /* solos-guitar.mp3 in Resources */,
 				20E43D862BDCEAD400715972 /* Stevie Wonder - Spain.mp3 in Resources */,
 				20CC5EF52BE2496A00EA681F /* theme2-vocals.mp3 in Resources */,
+				205AB5AB2BE2BE4300F0DC12 /* dt-guitar-bridge.mp3 in Resources */,
 				20CC5EF12BE2496A00EA681F /* theme2-drums.mp3 in Resources */,
+				205AB5B42BE2BE4300F0DC12 /* dt-full-verse1.mp3 in Resources */,
+				205AB5AE2BE2BE4300F0DC12 /* dt-drums-intro.mp3 in Resources */,
 				20CC5EEA2BE2496A00EA681F /* theme1-other.mp3 in Resources */,
 				20CC5EF62BE2496A00EA681F /* theme2-bass.mp3 in Resources */,
 				20CC5EE52BE2496A00EA681F /* solos-vocals.mp3 in Resources */,
+				205AB5A62BE2BE4300F0DC12 /* dt-guitar-chorus2.mp3 in Resources */,
 				20CC5EF32BE2496A00EA681F /* theme2-guitar.mp3 in Resources */,
 				20E43D872BDCEAD400715972 /* drum.m4a in Resources */,
+				205AB5AF2BE2BE4300F0DC12 /* dt-full-intro.mp3 in Resources */,
 				20D8D9952BDA4E90003148F8 /* Assets.xcassets in Resources */,
 				20CC5EF02BE2496A00EA681F /* theme1-guitar.mp3 in Resources */,
 				20CC5EE82BE2496A00EA681F /* theme1-vocals.mp3 in Resources */,
+				205AB5A12BE2BE4300F0DC12 /* dt-guitar-chorus1.mp3 in Resources */,
 				20CC5EEB2BE2496A00EA681F /* solos-full.mp3 in Resources */,
 				20E43D892BDCEAD400715972 /* guitar.m4a in Resources */,
+				205AB5AA2BE2BE4300F0DC12 /* dt-full-bridge.mp3 in Resources */,
+				205AB5A92BE2BE4300F0DC12 /* dt-drums-bridge.mp3 in Resources */,
 				20CC5EE72BE2496A00EA681F /* theme1-drums.mp3 in Resources */,
 				20CC5EEE2BE2496A00EA681F /* theme2-full.mp3 in Resources */,
 				20CC5EEC2BE2496A00EA681F /* solos-bass.mp3 in Resources */,
@@ -309,9 +494,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2089E4CD2BE0151D0046340D /* SplashScreen.swift in Sources */,
+				205AB5762BE2BB0D00F0DC12 /* CharacterMenuToDean.swift in Sources */,
 				47A25F592BDF4F14004BE6BA /* CharacterMenu.swift in Sources */,
 				2089E4D12BE01F5F0046340D /* CharacterCustomScene.swift in Sources */,
 				20E43D7B2BDCA68400715972 /* GameScene.swift in Sources */,
+				205AB5742BE2B9FC00F0DC12 /* DeanTownScene.swift in Sources */,
+				205AB5782BE2BB4F00F0DC12 /* DeanTownView.swift in Sources */,
 				20D8D9932BDA4E8E003148F8 /* ContentView.swift in Sources */,
 				20D8D9912BDA4E8E003148F8 /* all_notes_matterApp.swift in Sources */,
 				47A25F572BDF4909004BE6BA /* StartMenu.swift in Sources */,
