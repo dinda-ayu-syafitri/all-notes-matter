@@ -26,7 +26,7 @@ struct CharacterMenu: View {
     @State var isPlayerRed = true
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 Image("brick-background")
                     .resizable()
@@ -65,14 +65,9 @@ struct CharacterMenu: View {
                     NavigationLink(destination: ContentView(isPlayerRed: $isPlayerRed)) {
                         Image("play")
                     }
-                    .navigationBarBackButtonHidden()
-                    //                    Image("play")
 
                     Spacer()
 
-                    //                    NavigationLink(destination: StartMenu()) {
-                    //                        Image("home")
-                    //                    }
                 }
                 .padding(.bottom, 150)
             }
@@ -80,6 +75,8 @@ struct CharacterMenu: View {
                 Color.black
             }
         }
+        .navigationBarBackButtonHidden()
+
     }
 }
 
