@@ -39,9 +39,9 @@ struct ContentView: View {
     @State private var isPresenting = false
 
     init(isPlayerRed: Binding<Bool>) {
-            _isPlayerRed = isPlayerRed
-            _sceneStore = StateObject(wrappedValue: SceneStore(isPlayerRed: isPlayerRed.wrappedValue))
-        }
+        _isPlayerRed = isPlayerRed
+        _sceneStore = StateObject(wrappedValue: SceneStore(isPlayerRed: isPlayerRed.wrappedValue))
+    }
 
     var body: some View {
 
@@ -65,34 +65,37 @@ struct ContentView: View {
                         })
                         .fullScreenCover(isPresented: $isPresenting
                         ) {
-                            VStack {
-                                Image(systemName: "pause.fill")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 50)
-                                    .foregroundStyle(Color(red: 0.95, green: 0.57, blue: 0.02))
-                                HStack {
-                                    Image("play 1")
+                            NavigationStack {
+                                VStack {
+                                    Image(systemName: "pause.fill")
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(width: 100)
-                                        .padding(.trailing, 40)
-                                        .onTapGesture {
-                                            isPresenting.toggle()
-                                            isGamePaused.toggle()
-                                            sceneStore.scene.isPaused = isGamePaused
-                                        }
-                                    NavigationLink(destination: StartMenu(), label: {
-                                        Image("home-new")
+                                        .frame(width: 50)
+                                        .foregroundStyle(Color(red: 0.95, green: 0.57, blue: 0.02))
+                                    HStack {
+                                        Image("play 1")
                                             .resizable()
                                             .scaledToFit()
                                             .frame(width: 100)
-                                    })
+                                            .padding(.trailing, 40)
+                                            .onTapGesture {
+                                                isPresenting.toggle()
+                                                isGamePaused.toggle()
+                                                sceneStore.scene.isPaused = isGamePaused
+                                            }
+                                        NavigationLink(destination: StartMenu(), label: {
+                                            Image("home-new")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 100)
+                                        })
 
+
+                                    }
+                                    .padding(.top, 50)
                                 }
-                                .padding(.top, 50)
                             }
-
+                            .navigationBarBackButtonHidden()
                             .presentationBackground(Color(red: 0.22, green: 0.22, blue: 0.22).opacity(0.8))
                             .frame(maxWidth: .infinity,
                                    maxHeight: .infinity)
@@ -107,8 +110,6 @@ struct ContentView: View {
             .padding()
         }
         .navigationBarBackButtonHidden()
-
-
     }
 }
 
