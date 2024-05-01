@@ -26,7 +26,7 @@ struct CharacterMenu: View {
     @State var isPlayerRed = true
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 Image("brick-background")
                     .resizable()
@@ -34,6 +34,7 @@ struct CharacterMenu: View {
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .edgesIgnoringSafeArea(.all)
                     .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
+
 
                 VStack (spacing: 0) {
                     Image("spot")
@@ -65,21 +66,34 @@ struct CharacterMenu: View {
                     NavigationLink(destination: ContentView(isPlayerRed: $isPlayerRed)) {
                         Image("play")
                     }
-                    .navigationBarBackButtonHidden()
-                    //                    Image("play")
+                    
 
                     Spacer()
 
-                    //                    NavigationLink(destination: StartMenu()) {
-                    //                        Image("home")
-                    //                    }
                 }
                 .padding(.bottom, 150)
+
+                VStack {
+                    HStack (alignment: .top) {
+                        NavigationLink(destination: StartMenu(), label: {
+                            Image("home-new")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 80)
+                        })
+                        Spacer()
+
+                    }
+                    .padding(.leading, 20)
+                }
+                .padding(.bottom, 650)
             }
             .background{
                 Color.black
             }
         }
+        .navigationBarBackButtonHidden()
+
     }
 }
 

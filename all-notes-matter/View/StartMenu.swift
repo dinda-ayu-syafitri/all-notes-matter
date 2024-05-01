@@ -9,8 +9,8 @@ import SwiftUI
 
 struct StartMenu: View {
     var body: some View {
-        
-        NavigationView {
+
+        NavigationStack {
             ZStack {
                 Image("brick-background")
                     .resizable()
@@ -18,7 +18,7 @@ struct StartMenu: View {
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .edgesIgnoringSafeArea(.all)
                     .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
-                
+
                 ScrollView ([.vertical]) {
                     VStack {
                         Image("si-orang")
@@ -26,7 +26,7 @@ struct StartMenu: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(height: 250)
                             .edgesIgnoringSafeArea(.top)
-                        
+
                         VStack(alignment: .leading, spacing: 23) {
                             HStack(alignment: .top, spacing: 23) {
                                 Rectangle()
@@ -49,9 +49,9 @@ struct StartMenu: View {
                                         NavigationLink(destination: CharacterMenu()) {
                                             Image("play")
                                         }
-                                        
+
                                     )
-                                
+
                                 Rectangle()
                                     .foregroundColor(.clear)
                                     .frame(width: 161, height: 214)
@@ -84,7 +84,7 @@ struct StartMenu: View {
                                     .overlay(
                                         Image("lock")
                                     )
-                                
+
                                 Rectangle()
                                     .foregroundColor(.clear)
                                     .frame(width: 161, height: 214)
@@ -100,7 +100,7 @@ struct StartMenu: View {
                                     .overlay(
                                         Image("lock")
                                     )
-                                
+
                             }
                             HStack(alignment: .top, spacing: 23) {
                                 Rectangle()
@@ -118,7 +118,7 @@ struct StartMenu: View {
                                     .overlay(
                                         Image("lock")
                                     )
-                                
+
                                 Rectangle()
                                     .foregroundColor(.clear)
                                     .frame(width: 161, height: 214)
@@ -134,7 +134,7 @@ struct StartMenu: View {
                                     .overlay(
                                         Image("lock")
                                     )
-                                
+
                             }
                         }
                         .padding(.top, 100.0)
@@ -146,10 +146,11 @@ struct StartMenu: View {
             .padding(.top, 200.0)
             .background{
                 Color.black
-                
-                
+
+
             }
         }
+        .navigationBarBackButtonHidden()
     }
 }
 
