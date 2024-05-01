@@ -31,13 +31,19 @@ struct ContentView: View {
     }
 
     var body: some View {
-        VStack {
-            SpriteView(scene: scene)
-                 .frame(width: sceneWidth, height: sceneHeight, alignment: .center)
-                 .ignoresSafeArea()
+        NavigationStack {
+            ZStack {
+                SpriteView(scene: scene)
+                     .frame(width: sceneWidth, height: sceneHeight, alignment: .center)
+                     .ignoresSafeArea()
+                NavigationLink(destination: StartMenu()) {
+                                    Image("home-btn")
+                                }
+            }
+            .padding()
+            .navigationBarBackButtonHidden()
         }
-        .padding()
-        .navigationBarBackButtonHidden()
+
     }
 }
 

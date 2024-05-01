@@ -8,6 +8,7 @@
 import SpriteKit
 import GameController
 import AVFoundation
+import SwiftUI
 
 extension CGPoint {
     func distance(to point: CGPoint) -> CGFloat {
@@ -35,6 +36,8 @@ extension SKScene {
 }
 
 class GameScene: SKScene {
+    @Environment(\.dismiss) var dismiss
+
     //    var updatePlayerRedState: ((Bool) -> Void)?
     var isPlayerRed: Bool!
     
@@ -49,7 +52,8 @@ class GameScene: SKScene {
     var progressPlaceholder: SKShapeNode!
     var backBtn: SKSpriteNode!
     var nextBtn: SKSpriteNode!
-    
+//    var homeBtn: SKSpriteNode!
+
     var progress: CGFloat = 0
     
     //    PlayerNode
@@ -82,7 +86,8 @@ class GameScene: SKScene {
     var trumpetNode: SKSpriteNode!
     var bassNode: SKSpriteNode!
     var bongoNode: SKSpriteNode!
-    
+    var centerAudioNode:SKSpriteNode!
+
     // Audio Node
     var allAudioNodes: Array<SKAudioNode>!
     var guitarAudio: SKAudioNode!
@@ -126,6 +131,7 @@ class GameScene: SKScene {
             let audioNode = SKAudioNode(url: audioURL)
             audioNode.isPositional = true
             audioNode.position = forNode.position
+//            audioNode.run(SKAction.changeVolume(to: 1, duration: 0))
             audioNode.run(SKAction.changeVolume(to: 1, duration: 0))
             forNode.addChild(audioNode)
             return audioNode
@@ -133,7 +139,20 @@ class GameScene: SKScene {
             return nil
         }
     }
-    
+
+//    func createAudio(audioName: String, audioExtension: String, forNode: SKSpriteNode) -> AVAudioPlayer? {
+//        if let audioURL = Bundle.main.url(forResource: audioName, withExtension: audioExtension) {
+//            let audioNode = AVAudioNode()
+////            audioNode.isPositional = true
+//            audioNode.position = forNode.position
+////            audioNode.run(SKAction.changeVolume(to: 1, duration: 0))
+//            forNode.addChild(audioNode)
+//            return audioNode
+//        } else {
+//            return nil
+//        }
+//    }
+
     
     //    func back5Sec() {
     //        allAudioNodes = self.getAllAudioNodes()
@@ -222,7 +241,11 @@ class GameScene: SKScene {
         nextBtn = createSpriteNode(imageName: "next5", scale: 1, position: CGPoint(x: playerNode.position.x + 180, y: playerNode.position.y - 400))
         nextBtn.zPosition = 55
         addChild(nextBtn)
-        
+
+//        homeBtn = createSpriteNode(imageName: "home-btn", scale: 1, position: CGPoint(x:50, y: 950))
+//        homeBtn.zPosition = 100
+//        addChild(homeBtn)
+
         // Progress Bar
         progressBar = SKShapeNode(rectOf: CGSize(width: size.width - 50, height: 8))
         progressBar.fillColor = UIColor(red: 0.95, green: 0.57, blue: 0.02, alpha: 1)
@@ -327,12 +350,20 @@ class GameScene: SKScene {
         
         
         // Audio Set Up
-        //        if let bgAudioURL = Bundle.main.url(forResource: "Stevie Wonder - Spain", withExtension: "mp3") {
-        //            let bgAudioNode = SKAudioNode(url: bgAudioURL)
-        //            bgAudioNode.run(SKAction.changeVolume(to: 1, duration: 0))
-        //            addChild(bgAudioNode)
-        //        }
-        
+//                if let bgAudioURL = Bundle.main.url(forResource: "Stevie Wonder - Spain", withExtension: "mp3") {
+//                    let bgAudioNode = SKAudioNode(url: bgAudioURL)
+//                    bgAudioNode.position = CGPoint(x:size.width, y: 500)
+//                    bgAudioNode.run(SKAction.changeVolume(to: 1, duration: 0))
+//                    addChild(bgAudioNode)
+//                }
+
+        centerAudioNode = createSpriteNode(imageName: "player-shadow", scale: 1, position: CGPoint(x: size.width - 200, y: 500))
+//        centerAudioNode.fillColor = UIColor(.clear)
+        centerAudioNode.alpha = 0
+        addChild(centerAudioNode)
+
+        completeAudio = createAudio(audioName: "Stevie Wonder - Spain", audioExtension: "mp3", forNode: centerAudioNode)
+
         percussionAudio = createAudio(audioName: "drum", audioExtension: "m4a", forNode: percussionGroup)
         bassAudio = createAudio(audioName: "bass2", audioExtension: "m4a", forNode: bassGroup)
         guitarAudio = createAudio(audioName: "guitar", audioExtension: "m4a", forNode: guitarGroup)
@@ -386,10 +417,15 @@ class GameScene: SKScene {
             if backBtn.contains(touch.location(in: self)) {
                 print("Back Pressed")
             }
+
             if nextBtn.contains(touch.location(in: self)) {
                 print("Next Pressed")
-            }
-            
+            }   
+
+//            if homeBtn.contains(touch.location(in: self)) {
+//               dismiss()
+//            }
+
         }
         
         
@@ -407,7 +443,7 @@ class GameScene: SKScene {
             
             playerPosX = positionInThumbstick.x / maxDistance
             playerPosY = positionInThumbstick.y / maxDistance
-            
+
             if distance > maxDistance {
                 let angle = atan2(positionInThumbstick.y, positionInThumbstick.x)
                 playerPosX = cos(angle)
@@ -457,9 +493,9 @@ class GameScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        playerNode.position.x += playerPosX * 1
-        playerNode.position.y += playerPosY * 1
-        
+        playerNode.position.x += playerPosX * 2
+        playerNode.position.y += playerPosY * 2
+
         playerCam.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y)
         
         //        UI Relative to Camera
@@ -469,7 +505,8 @@ class GameScene: SKScene {
         progressPlaceholder.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y - 245)
         nextBtn.position = CGPoint(x: playerNode.position.x + 180, y: playerNode.position.y - 400)
         backBtn.position = CGPoint(x: playerNode.position.x - 180, y: playerNode.position.y - 400)
-        
+//        homeBtn.position = CGPoint(x: playerNode.position.x - 150, y: playerNode.position.y + 400)
+
         
         if playerPosX > 0 {
             playerNode.xScale = abs(playerNode.xScale)
@@ -506,6 +543,8 @@ class GameScene: SKScene {
         
         
     }
+
+
 }
 
 
