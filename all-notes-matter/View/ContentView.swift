@@ -16,11 +16,12 @@ class SceneStore : ObservableObject {
     let sceneWidth = UIScreen.main.bounds.width
     let sceneHeight = UIScreen.main.bounds.height
 
-    init() {
+    init(isPlayerRed:Bool) {
         scene.size = CGSize(width: sceneWidth, height: sceneHeight)
         scene.scaleMode = .fill
-//        scene.backgroundColor = UIColor(red: 0.12, green: 0.12, blue: 0.12, alpha: 1)
-        scene.isPlayerRed = true
+        scene.isPlayerRed = isPlayerRed
+
+        //        scene.backgroundColor = UIColor(red: 0.12, green: 0.12, blue: 0.12, alpha: 1)
     }
 }
 
@@ -29,13 +30,18 @@ struct ContentView: View {
     @Binding var isPlayerRed: Bool
     @State var isGamePaused = false
 
-    @StateObject private var sceneStore = SceneStore()
+    @StateObject private var sceneStore: SceneStore
 
 
     let sceneWidth = UIScreen.main.bounds.width
     let sceneHeight = UIScreen.main.bounds.height
 
     @State private var isPresenting = false
+
+    init(isPlayerRed: Binding<Bool>) {
+            _isPlayerRed = isPlayerRed
+            _sceneStore = StateObject(wrappedValue: SceneStore(isPlayerRed: isPlayerRed.wrappedValue))
+        }
 
     var body: some View {
 
@@ -76,10 +82,13 @@ struct ContentView: View {
                                             isGamePaused.toggle()
                                             sceneStore.scene.isPaused = isGamePaused
                                         }
-                                    Image("home-new")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 100)
+                                    NavigationLink(destination: StartMenu(), label: {
+                                        Image("home-new")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 100)
+                                    })
+
                                 }
                                 .padding(.top, 50)
                             }
