@@ -272,26 +272,26 @@ class GameScene: SKScene {
         
         
         // Instrument Set Up
-        percussionGroup = createSpriteNode(imageName: "Drum and bongo hitbox", scale: 1, position: CGPoint(x: -75, y: 830))
+        percussionGroup = createSpriteNode(imageName: "Drum and bongo hitbox", scale: 1.3, position: CGPoint(x: -155, y: 580))
         addChild(percussionGroup)
         
-        drumNode = createSpriteNode(imageName: "drum", scale: 0.15, position: CGPoint(x: -30, y: 80))
+        drumNode = createSpriteNode(imageName: "drum", scale: 0.15, position: CGPoint(x: 10, y: 50))
         drumNode.run(SKAction.repeatForever(createAnimation(atlasName:"drum-textures")))
         
-        bongoNode = createSpriteNode(imageName: "gendang", scale: 0.08, position: CGPoint(x: 130, y: 80))
+        bongoNode = createSpriteNode(imageName: "gendang", scale: 0.08, position: CGPoint(x: 170, y: 50))
         bongoNode.run(SKAction.repeatForever(createAnimation(atlasName: "bongo-textures")))
         
         percussionGroup.addChild(drumNode)
         percussionGroup.addChild(bongoNode)
         
         
-        pianoHarmonicaGroup = createSpriteNode(imageName: "Piano and harmonica hitbox", scale: 1, position: CGPoint(x: 465, y: 740))
+        pianoHarmonicaGroup = createSpriteNode(imageName: "Piano and harmonica hitbox", scale: 1.5, position: CGPoint(x: 605, y: 580))
         addChild(pianoHarmonicaGroup)
         
-        pianoSynthNode = createSpriteNode(imageName: "piano", scale: 0.2, position: CGPoint(x: 30, y: 30))
+        pianoSynthNode = createSpriteNode(imageName: "piano", scale: 0.2, position: CGPoint(x: -50, y: 10))
         pianoSynthNode.run(SKAction.repeatForever(createAnimation(atlasName: "keyboard-textures")))
         
-        harmonicaNode = createSpriteNode(imageName: "harmonica", scale: 0.08, position: CGPoint(x: -20, y: -40))
+        harmonicaNode = createSpriteNode(imageName: "harmonica", scale: 0.08, position: CGPoint(x: -80, y: -70))
         harmonicaNode.zRotation = -0.15
         harmonicaNode.run(SKAction.repeatForever(createAnimation(atlasName: "harmonica-textures")))
         
@@ -300,7 +300,7 @@ class GameScene: SKScene {
         
         
         
-        saxTrumpetGroup = createSpriteNode(imageName: "sax hitbox", scale: 1, position: CGPoint(x: 580, y: 450))
+        saxTrumpetGroup = createSpriteNode(imageName: "sax hitbox", scale: 1.5, position: CGPoint(x: 680, y: 250))
         addChild(saxTrumpetGroup)
         
         saxNode = createSpriteNode(imageName: "sax", scale: 0.3, position: CGPoint(x: -50, y: 50))
@@ -316,16 +316,16 @@ class GameScene: SKScene {
         saxTrumpetGroup.addChild(trumpetNode)
         
         
-        bassGroup = createSpriteNode(imageName: "Bass hitbox", scale: 1, position: CGPoint(x: -180, y: 555))
+        bassGroup = createSpriteNode(imageName: "Bass hitbox", scale: 1.3, position: CGPoint(x: -300, y: 255))
         addChild(bassGroup)
         
-        bassNode = createSpriteNode(imageName: "bass", scale: 0.15, position: CGPoint(x: 70, y: 30))
+        bassNode = createSpriteNode(imageName: "bass", scale: 0.15, position: CGPoint(x: 30, y: 30))
         bassNode.run(SKAction.repeatForever(createAnimation(atlasName: "bass-textures")))
         
         bassGroup.addChild(bassNode)
         
         
-        guitarGroup = createSpriteNode(imageName: "Guitar hitbox", scale: 1, position: CGPoint(x: 150, y: 280))
+        guitarGroup = createSpriteNode(imageName: "Guitar hitbox", scale: 1.3, position: CGPoint(x: 150, y: 0))
         addChild(guitarGroup)
         
         guitarNode = createSpriteNode(imageName: "guitar", scale: 0.15, position: CGPoint(x: 0, y: 30))
