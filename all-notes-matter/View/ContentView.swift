@@ -61,6 +61,7 @@ struct ContentView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
+                                .padding(.top, 40)
 
                         })
                         .fullScreenCover(isPresented: $isPresenting

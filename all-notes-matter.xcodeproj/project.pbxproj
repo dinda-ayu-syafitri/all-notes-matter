@@ -10,6 +10,24 @@
 		2089E4CD2BE0151D0046340D /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2089E4CC2BE0151D0046340D /* SplashScreen.swift */; };
 		2089E4CF2BE01CE00046340D /* bass2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 2089E4CE2BE01CE00046340D /* bass2.m4a */; };
 		2089E4D12BE01F5F0046340D /* CharacterCustomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2089E4D02BE01F5F0046340D /* CharacterCustomScene.swift */; };
+		20CC5EE52BE2496A00EA681F /* solos-vocals.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20CC5ED32BE2496700EA681F /* solos-vocals.mp3 */; };
+		20CC5EE62BE2496A00EA681F /* solos-drums.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20CC5ED42BE2496700EA681F /* solos-drums.mp3 */; };
+		20CC5EE72BE2496A00EA681F /* theme1-drums.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20CC5ED52BE2496700EA681F /* theme1-drums.mp3 */; };
+		20CC5EE82BE2496A00EA681F /* theme1-vocals.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20CC5ED62BE2496800EA681F /* theme1-vocals.mp3 */; };
+		20CC5EE92BE2496A00EA681F /* solos-guitar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20CC5ED72BE2496800EA681F /* solos-guitar.mp3 */; };
+		20CC5EEA2BE2496A00EA681F /* theme1-other.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20CC5ED82BE2496800EA681F /* theme1-other.mp3 */; };
+		20CC5EEB2BE2496A00EA681F /* solos-full.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20CC5ED92BE2496800EA681F /* solos-full.mp3 */; };
+		20CC5EEC2BE2496A00EA681F /* solos-bass.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20CC5EDA2BE2496800EA681F /* solos-bass.mp3 */; };
+		20CC5EED2BE2496A00EA681F /* solos-other.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20CC5EDB2BE2496900EA681F /* solos-other.mp3 */; };
+		20CC5EEE2BE2496A00EA681F /* theme2-full.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20CC5EDC2BE2496900EA681F /* theme2-full.mp3 */; };
+		20CC5EEF2BE2496A00EA681F /* theme1-full.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20CC5EDD2BE2496900EA681F /* theme1-full.mp3 */; };
+		20CC5EF02BE2496A00EA681F /* theme1-guitar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20CC5EDE2BE2496900EA681F /* theme1-guitar.mp3 */; };
+		20CC5EF12BE2496A00EA681F /* theme2-drums.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20CC5EDF2BE2496900EA681F /* theme2-drums.mp3 */; };
+		20CC5EF22BE2496A00EA681F /* theme2-other.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20CC5EE02BE2496900EA681F /* theme2-other.mp3 */; };
+		20CC5EF32BE2496A00EA681F /* theme2-guitar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20CC5EE12BE2496900EA681F /* theme2-guitar.mp3 */; };
+		20CC5EF42BE2496A00EA681F /* theme1-bass.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20CC5EE22BE2496A00EA681F /* theme1-bass.mp3 */; };
+		20CC5EF52BE2496A00EA681F /* theme2-vocals.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20CC5EE32BE2496A00EA681F /* theme2-vocals.mp3 */; };
+		20CC5EF62BE2496A00EA681F /* theme2-bass.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20CC5EE42BE2496A00EA681F /* theme2-bass.mp3 */; };
 		20D8D9912BDA4E8E003148F8 /* all_notes_matterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8D9902BDA4E8E003148F8 /* all_notes_matterApp.swift */; };
 		20D8D9932BDA4E8E003148F8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8D9922BDA4E8E003148F8 /* ContentView.swift */; };
 		20D8D9952BDA4E90003148F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20D8D9942BDA4E90003148F8 /* Assets.xcassets */; };
@@ -29,6 +47,24 @@
 		2089E4CC2BE0151D0046340D /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		2089E4CE2BE01CE00046340D /* bass2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = bass2.m4a; sourceTree = "<group>"; };
 		2089E4D02BE01F5F0046340D /* CharacterCustomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCustomScene.swift; sourceTree = "<group>"; };
+		20CC5ED32BE2496700EA681F /* solos-vocals.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "solos-vocals.mp3"; sourceTree = "<group>"; };
+		20CC5ED42BE2496700EA681F /* solos-drums.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "solos-drums.mp3"; sourceTree = "<group>"; };
+		20CC5ED52BE2496700EA681F /* theme1-drums.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "theme1-drums.mp3"; sourceTree = "<group>"; };
+		20CC5ED62BE2496800EA681F /* theme1-vocals.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "theme1-vocals.mp3"; sourceTree = "<group>"; };
+		20CC5ED72BE2496800EA681F /* solos-guitar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "solos-guitar.mp3"; sourceTree = "<group>"; };
+		20CC5ED82BE2496800EA681F /* theme1-other.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "theme1-other.mp3"; sourceTree = "<group>"; };
+		20CC5ED92BE2496800EA681F /* solos-full.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "solos-full.mp3"; sourceTree = "<group>"; };
+		20CC5EDA2BE2496800EA681F /* solos-bass.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "solos-bass.mp3"; sourceTree = "<group>"; };
+		20CC5EDB2BE2496900EA681F /* solos-other.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "solos-other.mp3"; sourceTree = "<group>"; };
+		20CC5EDC2BE2496900EA681F /* theme2-full.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "theme2-full.mp3"; sourceTree = "<group>"; };
+		20CC5EDD2BE2496900EA681F /* theme1-full.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "theme1-full.mp3"; sourceTree = "<group>"; };
+		20CC5EDE2BE2496900EA681F /* theme1-guitar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "theme1-guitar.mp3"; sourceTree = "<group>"; };
+		20CC5EDF2BE2496900EA681F /* theme2-drums.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "theme2-drums.mp3"; sourceTree = "<group>"; };
+		20CC5EE02BE2496900EA681F /* theme2-other.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "theme2-other.mp3"; sourceTree = "<group>"; };
+		20CC5EE12BE2496900EA681F /* theme2-guitar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "theme2-guitar.mp3"; sourceTree = "<group>"; };
+		20CC5EE22BE2496A00EA681F /* theme1-bass.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "theme1-bass.mp3"; sourceTree = "<group>"; };
+		20CC5EE32BE2496A00EA681F /* theme2-vocals.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "theme2-vocals.mp3"; sourceTree = "<group>"; };
+		20CC5EE42BE2496A00EA681F /* theme2-bass.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "theme2-bass.mp3"; sourceTree = "<group>"; };
 		20D8D98D2BDA4E8E003148F8 /* all-notes-matter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "all-notes-matter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20D8D9902BDA4E8E003148F8 /* all_notes_matterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = all_notes_matterApp.swift; sourceTree = "<group>"; };
 		20D8D9922BDA4E8E003148F8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -56,6 +92,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20CC5ED22BE2413500EA681F /* Spain Audio */ = {
+			isa = PBXGroup;
+			children = (
+				20CC5EF92BE2499200EA681F /* Theme 2 */,
+				20CC5EF82BE2498100EA681F /* Theme 1 */,
+				20CC5EF72BE2497100EA681F /* Solos */,
+			);
+			path = "Spain Audio";
+			sourceTree = "<group>";
+		};
+		20CC5EF72BE2497100EA681F /* Solos */ = {
+			isa = PBXGroup;
+			children = (
+				20CC5EDA2BE2496800EA681F /* solos-bass.mp3 */,
+				20CC5ED42BE2496700EA681F /* solos-drums.mp3 */,
+				20CC5ED92BE2496800EA681F /* solos-full.mp3 */,
+				20CC5ED72BE2496800EA681F /* solos-guitar.mp3 */,
+				20CC5EDB2BE2496900EA681F /* solos-other.mp3 */,
+				20CC5ED32BE2496700EA681F /* solos-vocals.mp3 */,
+			);
+			path = Solos;
+			sourceTree = "<group>";
+		};
+		20CC5EF82BE2498100EA681F /* Theme 1 */ = {
+			isa = PBXGroup;
+			children = (
+				20CC5EE22BE2496A00EA681F /* theme1-bass.mp3 */,
+				20CC5ED52BE2496700EA681F /* theme1-drums.mp3 */,
+				20CC5EDD2BE2496900EA681F /* theme1-full.mp3 */,
+				20CC5EDE2BE2496900EA681F /* theme1-guitar.mp3 */,
+				20CC5ED82BE2496800EA681F /* theme1-other.mp3 */,
+				20CC5ED62BE2496800EA681F /* theme1-vocals.mp3 */,
+			);
+			path = "Theme 1";
+			sourceTree = "<group>";
+		};
+		20CC5EF92BE2499200EA681F /* Theme 2 */ = {
+			isa = PBXGroup;
+			children = (
+				20CC5EE42BE2496A00EA681F /* theme2-bass.mp3 */,
+				20CC5EDF2BE2496900EA681F /* theme2-drums.mp3 */,
+				20CC5EDC2BE2496900EA681F /* theme2-full.mp3 */,
+				20CC5EE12BE2496900EA681F /* theme2-guitar.mp3 */,
+				20CC5EE02BE2496900EA681F /* theme2-other.mp3 */,
+				20CC5EE32BE2496A00EA681F /* theme2-vocals.mp3 */,
+			);
+			path = "Theme 2";
+			sourceTree = "<group>";
+		};
 		20D8D9842BDA4E8E003148F8 = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +193,7 @@
 		20E43D7C2BDCEA8900715972 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				20CC5ED22BE2413500EA681F /* Spain Audio */,
 				20E43D7D2BDCEA9E00715972 /* AudioSrc */,
 			);
 			path = Assets;
@@ -186,13 +272,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				2089E4CF2BE01CE00046340D /* bass2.m4a in Resources */,
+				20CC5EEF2BE2496A00EA681F /* theme1-full.mp3 in Resources */,
+				20CC5EE62BE2496A00EA681F /* solos-drums.mp3 in Resources */,
+				20CC5EF42BE2496A00EA681F /* theme1-bass.mp3 in Resources */,
 				20D8D9982BDA4E90003148F8 /* Preview Assets.xcassets in Resources */,
 				20E43D842BDCEAD400715972 /* bass.m4a in Resources */,
+				20CC5EF22BE2496A00EA681F /* theme2-other.mp3 in Resources */,
+				20CC5EED2BE2496A00EA681F /* solos-other.mp3 in Resources */,
 				20E43D852BDCEAD400715972 /* vocals.m4a in Resources */,
+				20CC5EE92BE2496A00EA681F /* solos-guitar.mp3 in Resources */,
 				20E43D862BDCEAD400715972 /* Stevie Wonder - Spain.mp3 in Resources */,
+				20CC5EF52BE2496A00EA681F /* theme2-vocals.mp3 in Resources */,
+				20CC5EF12BE2496A00EA681F /* theme2-drums.mp3 in Resources */,
+				20CC5EEA2BE2496A00EA681F /* theme1-other.mp3 in Resources */,
+				20CC5EF62BE2496A00EA681F /* theme2-bass.mp3 in Resources */,
+				20CC5EE52BE2496A00EA681F /* solos-vocals.mp3 in Resources */,
+				20CC5EF32BE2496A00EA681F /* theme2-guitar.mp3 in Resources */,
 				20E43D872BDCEAD400715972 /* drum.m4a in Resources */,
 				20D8D9952BDA4E90003148F8 /* Assets.xcassets in Resources */,
+				20CC5EF02BE2496A00EA681F /* theme1-guitar.mp3 in Resources */,
+				20CC5EE82BE2496A00EA681F /* theme1-vocals.mp3 in Resources */,
+				20CC5EEB2BE2496A00EA681F /* solos-full.mp3 in Resources */,
 				20E43D892BDCEAD400715972 /* guitar.m4a in Resources */,
+				20CC5EE72BE2496A00EA681F /* theme1-drums.mp3 in Resources */,
+				20CC5EEE2BE2496A00EA681F /* theme2-full.mp3 in Resources */,
+				20CC5EEC2BE2496A00EA681F /* solos-bass.mp3 in Resources */,
 				20E43D882BDCEAD400715972 /* other.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

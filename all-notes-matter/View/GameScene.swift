@@ -129,7 +129,6 @@ class GameScene: SKScene {
             let audioNode = SKAudioNode(url: audioURL)
             audioNode.isPositional = true
             audioNode.position = forNode.position
-//            audioNode.run(SKAction.changeVolume(to: 1, duration: 0))
             audioNode.run(SKAction.changeVolume(to: 1, duration: 0))
             forNode.addChild(audioNode)
             return audioNode
@@ -138,31 +137,14 @@ class GameScene: SKScene {
         }
     }
 
-//    func createAudio(audioName: String, audioExtension: String, forNode: SKSpriteNode) -> AVAudioPlayer? {
-//        if let audioURL = Bundle.main.url(forResource: audioName, withExtension: audioExtension) {
-//            let audioNode = AVAudioNode()
-////            audioNode.isPositional = true
-//            audioNode.position = forNode.position
-////            audioNode.run(SKAction.changeVolume(to: 1, duration: 0))
-//            forNode.addChild(audioNode)
-//            return audioNode
-//        } else {
-//            return nil
-//        }
-//    }
+    func skipPart(type:String) {
+        if type == "next" {
+                print("Skipping to next part")
+            } else {
+                // Handle other cases if needed
+            }
+    }
 
-    
-    //    func back5Sec() {
-    //        allAudioNodes = self.getAllAudioNodes()
-    //
-    //        for audioNode in allAudioNodes {
-    //            audioNode.setCurrentTime(0.5)
-    //
-    //             // Start playing the audio node
-    //             audioNode.run(SKAction.play())
-    //        }
-    //    }
-    
     func volumeController(allAudioNodes: [SKAudioNode]) {
         
         for audioNode in allAudioNodes {
@@ -344,7 +326,7 @@ class GameScene: SKScene {
 //                    addChild(bgAudioNode)
 //                }
 
-        centerAudioNode = createSpriteNode(imageName: "player-shadow", scale: 1, position: CGPoint(x: size.width - 200, y: 500))
+        centerAudioNode = createSpriteNode(imageName: "player-shadow", scale: 0.7, position: CGPoint(x: size.width - 200, y: 350))
 //        centerAudioNode.fillColor = UIColor(.clear)
         centerAudioNode.alpha = 0
         addChild(centerAudioNode)
