@@ -50,7 +50,7 @@ class GameScene: SKScene {
     var uiPanel: SKShapeNode!
     var backBtn: SKSpriteNode!
     var nextBtn: SKSpriteNode!
-//    var homeBtn: SKSpriteNode!
+//    var pauseBtn: SKSpriteNode!
 
     //    PlayerNode
     var playerNode: SKSpriteNode!
@@ -243,10 +243,10 @@ class GameScene: SKScene {
         nextBtn.zPosition = 55
         addChild(nextBtn)
 
-//        homeBtn = createSpriteNode(imageName: "home-btn", scale: 1, position: CGPoint(x:50, y: 950))
-//        homeBtn.zPosition = 100
-//        addChild(homeBtn)
-        
+//        pauseBtn = createSpriteNode(imageName: "pause", scale: 0.5, position: CGPoint(x:playerCam.position.x, y: playerCam.position.y + 750))
+//        pauseBtn.zPosition = 100
+//        addChild(pauseBtn)
+
         // Controller Set up
         // Thumbstick
         thumbstickNode = createSpriteNode(imageName: "thumbpad", scale: 0.8, position: CGPoint(x: playerNode.position.x, y: playerNode.position.y - 600))
