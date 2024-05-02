@@ -591,6 +591,18 @@ class GameScene: SKScene {
         //            print("should be changed")
         //        }
 
+        if songPart == 2 {
+            nextBtn.alpha = 0.5
+        } else {
+            nextBtn.alpha = 1
+        }
+
+        if songPart == 0 {
+            backBtn.alpha = 0.5
+        } else {
+            backBtn.alpha = 1
+        }
+
         if isPaused {
             for audioNode in allAudioNodes {
                 audioNode.run(SKAction.pause())

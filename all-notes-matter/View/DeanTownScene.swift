@@ -418,7 +418,7 @@ class DeanTownScene: SKScene {
         centerAudioNode.alpha = 0
         addChild(centerAudioNode)
 
-        completeAudio = createAudio(audioName: "dt-full-intro", audioExtension: "mp3", forNode: centerAudioNode)
+//        completeAudio = createAudio(audioName: "dt-full-intro", audioExtension: "mp3", forNode: centerAudioNode)
         percussionAudio = createAudio(audioName: "dt-drums-intro", audioExtension: "mp3", forNode: percussionGroup)
         bassAudio = createAudio(audioName: "dt-bass-intro", audioExtension: "mp3", forNode: bassGroup)
         guitarAudio = createAudio(audioName: "dt-guitar-intro", audioExtension: "mp3", forNode: guitarGroup)
@@ -578,6 +578,18 @@ class DeanTownScene: SKScene {
         //            bongoNode.run(SKAction.repeatForever(createAnimation(atlasName:"drum-textures")))
         //            print("should be changed")
         //        }
+
+        if songPart == 4 {
+            nextBtn.alpha = 0.5
+        } else {
+            nextBtn.alpha = 1
+        }
+
+        if songPart == 0 {
+            backBtn.alpha = 0.5
+        } else {
+            backBtn.alpha = 1
+        }
 
         if isPaused {
             for audioNode in allAudioNodes {
