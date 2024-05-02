@@ -415,7 +415,7 @@ class DeanTownScene: SKScene {
 
         centerAudioNode = createSpriteNode(imageName: "player-shadow", scale: 0.7, position: CGPoint(x: size.width - 200, y: 350))
         //        centerAudioNode.fillColor = UIColor(.clear)
-        centerAudioNode.alpha = 1
+        centerAudioNode.alpha = 0
         addChild(centerAudioNode)
 
         completeAudio = createAudio(audioName: "dt-full-intro", audioExtension: "mp3", forNode: centerAudioNode)
